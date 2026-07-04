@@ -145,3 +145,48 @@ blog/
 
 `startproject` creates the entire Django project, whereas `startapp` creates a single feature module inside that project.
 
+# Lesson 1.6 - Commands
+
+**No new Django commands were introduced in this lesson.**
+
+# Lesson 1.7 - Commands
+
+**No new Django commands were introduced in this lesson.**
+
+# Lesson 1.8 - Commands
+
+## Start Development Server
+
+### Syntax
+
+```bash
+python manage.py runserver
+```
+
+### Purpose
+
+Starts Django's built-in development server.
+
+### Example
+
+```bash
+python manage.py runserver
+```
+
+### Output
+
+Runs the application locally at:
+
+```text
+http://127.0.0.1:8000/
+```
+
+### Common Mistakes
+
+❌ Running the command outside the project directory.
+
+✔ Run it from the directory containing `manage.py`.
+
+### Interview Tip
+
+`runserver` is intended for development only. It should not be used as the production web server.

@@ -665,3 +665,326 @@ When an app is created using `startapp`, Django does **not** automatically inclu
 ### Interview Tip
 
 Creating an app and registering an app are two separate steps. An app exists on disk after `startapp`, but Django only loads it after it is added to `INSTALLED_APPS`.
+
+# Lesson 1.6 - Understanding Views
+
+## Definition
+
+A View is a Python function (or class) that receives an HTTP request, processes it, and returns an HTTP response.
+
+## Responsibilities of a View
+
+1. Receive the HTTP Request.
+2. Process the Request.
+3. Return an HTTP Response.
+
+## Basic View
+
+```python
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello, Django!")
+```
+
+## Code Breakdown
+
+### Import
+
+```python
+from django.http import HttpResponse
+```
+
+Imports Django's `HttpResponse` class.
+
+### View Function
+
+```python
+def home(request):
+```
+
+Defines a View function.
+
+- `home` → Function name.
+- `request` → Automatically created and passed by Django.
+
+### Response
+
+```python
+return HttpResponse("Hello, Django!")
+```
+
+Creates and returns an HTTP response to the browser.
+
+## Request Object
+
+The `request` object is automatically created by Django and contains information sent by the client.
+
+Examples:
+
+- Requested URL
+- HTTP Method (GET, POST)
+- Headers
+- Cookies
+- Session Data
+- Logged-in User
+- Form Data
+- Client IP Address
+
+## HttpResponse
+
+`HttpResponse` creates a valid HTTP response object that Django sends back to the client's browser.
+
+## print() vs HttpResponse()
+
+| print() | HttpResponse() |
+|----------|----------------|
+| Displays output in the terminal | Sends output to the browser |
+| Used for debugging | Used to return HTTP responses |
+
+## Request Flow
+
+Browser → HTTP Request → URL Dispatcher → View → Business Logic → HttpResponse → Browser
+
+## Important Points
+
+- Every View receives a `request` object.
+- Every View must return an HTTP response.
+- Django automatically passes the `request` object.
+- `print()` is not a replacement for `HttpResponse()`.
+- Views contain the application's business logic.
+
+## Common Mistakes
+
+❌ Forgetting to return an `HttpResponse`.
+
+✔ Every View must return an HTTP response.
+
+---
+
+❌ Using `print()` to display content in the browser.
+
+✔ Use `HttpResponse()` to send data to the browser.
+
+---
+
+❌ Thinking `request` is created manually.
+
+✔ Django automatically creates and passes the `request` object.
+
+## Interview Questions
+
+1. What is a Django View?
+2. What are the responsibilities of a View?
+3. What is the purpose of `HttpResponse`?
+4. What is the difference between `print()` and `HttpResponse()`?
+5. Where does the `request` object come from?
+6. What information can the `request` object contain?
+7. What happens if a View does not return an `HttpResponse`?
+
+## Summary
+
+A View is the core processing unit of a Django application. It receives an HTTP request, executes the required business logic, and returns an HTTP response. Django automatically provides the `request` object, while `HttpResponse` is used to send data back to the browser.
+
+# Lesson 1.7 - URL Mapping
+
+## Definition
+
+URL Mapping is the process of connecting a requested URL to the appropriate View function. Django performs this mapping using `urlpatterns`.
+
+## Why URL Mapping?
+
+- Connects URLs to Views.
+- Organizes application routing.
+- Keeps large projects modular and maintainable.
+- Allows each app to manage its own URLs.
+
+## Project URLs vs App URLs
+
+| Project `urls.py` | App `urls.py` |
+|-------------------|---------------|
+| Decides which app should handle the request | Decides which View should handle the request |
+
+## Creating App URLs
+
+Create a new file:
+
+```text
+blog/
+│
+└── urls.py
+```
+
+Example:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.home, name="home"),
+]
+```
+
+## `path()` Breakdown
+
+```python
+path("", views.home, name="home")
+```
+
+| Argument | Purpose |
+|----------|---------|
+| `""` | Matches the remaining URL after the app prefix |
+| `views.home` | Calls the `home` View |
+| `name="home"` | Assigns a name to the URL for future reference |
+
+## `include()`
+
+Example:
+
+```python
+path("blog/", include("blog.urls"))
+```
+
+`include()` tells Django to stop routing in the current `urls.py` and continue matching URLs inside `blog/urls.py`.
+
+## `from . import views`
+
+- `.` refers to the current app.
+- Imports the `views.py` file from the current directory.
+
+## Request Flow
+
+Browser → HTTP Request → Project `urls.py` → `include()` → App `urls.py` → View → `HttpResponse` → Browser
+
+## Important Points
+
+- Every URL should map to a View.
+- Large projects use separate `urls.py` files for each app.
+- `include()` delegates URL handling to another app.
+- `urlpatterns` stores URL-to-View mappings.
+
+## Common Mistakes
+
+❌ Assuming `path()` directly sends a response.
+
+✔ `path()` only maps URLs to Views.
+
+---
+
+❌ Thinking `""` matches every URL.
+
+✔ It matches the remaining part of the URL after the app prefix.
+
+---
+
+❌ Forgetting to use `include()` for app URLs.
+
+✔ Use `include()` to keep routing modular.
+
+## Interview Questions
+
+1. What is URL Mapping?
+2. What is the purpose of `urlpatterns`?
+3. What does `path()` do?
+4. What is `include()`?
+5. Why do Django projects have multiple `urls.py` files?
+6. Explain the arguments of `path("", views.home, name="home")`.
+7. What does `from . import views` mean?
+
+## Summary
+
+URL Mapping connects incoming URLs to View functions. The project `urls.py` decides which app should handle the request, while each app's `urls.py` decides which View should execute. The `include()` function delegates routing to an app, making Django projects modular and scalable.
+
+# Lesson 1.8 - Mini Project
+
+## Objective
+
+Build a simple multi-page Django application by connecting URLs to Views and returning different HTTP responses.
+
+## Multiple Views
+
+Example:
+
+```python
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to Home")
+
+def about(request):
+    return HttpResponse("About Page")
+
+def contact(request):
+    return HttpResponse("Contact Page")
+```
+
+Each View is responsible for handling one page.
+
+## URL Mapping
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.home, name="home"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
+]
+```
+
+Each URL maps to a specific View.
+
+## Complete Request Flow
+
+Browser → HTTP Request → Project `urls.py` → `include()` → App `urls.py` → Matching `path()` → View → `HttpResponse` → Browser
+
+## Responsibilities
+
+| Component | Responsibility |
+|-----------|----------------|
+| Browser | Sends HTTP Request |
+| Project `urls.py` | Routes request to the correct app |
+| `include()` | Delegates routing to the app |
+| App `urls.py` | Maps URL to a View |
+| View | Processes the request |
+| `HttpResponse` | Returns data to the browser |
+
+## Important Points
+
+- One View should handle one responsibility.
+- Every URL must map to a View.
+- Every View must return an `HttpResponse`.
+- `include()` keeps routing modular.
+- Django follows the URL mappings exactly as defined.
+
+## Common Mistakes
+
+❌ Mapping a URL to the wrong View.
+
+✔ Always verify URL-to-View mappings.
+
+---
+
+❌ Forgetting to define a URL pattern.
+
+✔ Every accessible page needs a corresponding `path()` entry.
+
+---
+
+❌ Assuming Django guesses the correct View.
+
+✔ Django only executes the View explicitly mapped in `urlpatterns`.
+
+## Interview Questions
+
+1. Explain the complete Django request lifecycle.
+2. Why do we use multiple Views?
+3. What is the purpose of `include()`?
+4. What happens if a URL pattern is missing?
+5. What happens if a URL is mapped to the wrong View?
+
+## Summary
+
+A Django application works by routing incoming requests from the browser through the project's `urls.py`, then the app's `urls.py`, which maps the request to a specific View. The View processes the request and returns an `HttpResponse`, which Django sends back to the browser.
