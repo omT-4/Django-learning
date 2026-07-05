@@ -1415,3 +1415,96 @@ Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Cr
 ## Summary
 
 Template Tags allow Django Templates to perform simple presentation logic such as conditions and loops. They make templates dynamic while maintaining a clear separation between presentation and business logic.
+
+# Lesson 2.6 - Template Inheritance
+
+## Definition
+
+Template Inheritance allows multiple templates to share a common layout while defining their own unique content.
+
+## Why Template Inheritance?
+
+- Eliminates duplicate HTML.
+- Improves maintainability.
+- Keeps layouts consistent.
+- Makes updates faster.
+
+## `base.html`
+
+`base.html` stores the reusable layout shared by multiple pages.
+
+Typical content includes:
+
+- `<html>`
+- `<head>`
+- Navigation Bar
+- Footer
+- CSS Links
+- JavaScript Links
+
+## Template Block
+
+```html
+{% block content %}
+
+{% endblock %}
+```
+
+A block is a placeholder that child templates replace with their own content.
+
+## Extending a Template
+
+```html
+{% extends "blog/base.html" %}
+```
+
+This tells Django to use `base.html` as the parent layout.
+
+## Child Template
+
+```html
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1>Home Page</h1>
+
+{% endblock %}
+```
+
+Only the page-specific content is written.
+
+## Internal Workflow
+
+Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Context → `render("blog/home.html")` → Open Child Template → Load `base.html` → Replace Blocks → Generate Final HTML → Create `HttpResponse` → Browser
+
+## Important Points
+
+- `base.html` contains reusable layout.
+- Child templates contain only unique content.
+- `{% extends %}` creates the parent-child relationship.
+- `{% block %}` defines replaceable sections.
+
+## Common Mistakes
+
+❌ Rewriting `<html>`, `<head>`, and `<body>` in child templates.
+
+✔ Keep them only in `base.html`.
+
+---
+
+❌ Forgetting `{% extends %}`.
+
+✔ Every child template should extend the appropriate parent template.
+
+## Interview Questions
+
+1. What is Template Inheritance?
+2. Why do we use `base.html`?
+3. What is the purpose of `{% extends %}`?
+4. What is the purpose of `{% block %}`?
+5. How does Template Inheritance improve maintainability?
+
+## Summary
+
+Template Inheritance allows Django templates to reuse a common layout through `base.html`. Child templates extend the parent template and replace predefined blocks with page-specific content, reducing duplication and improving maintainability.

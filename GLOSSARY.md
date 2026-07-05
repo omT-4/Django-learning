@@ -124,3 +124,19 @@
 |------|------------|
 | Presentation Logic | Logic that controls how information is displayed to the user, such as loops, conditions, and formatting. |
 | Business Logic | Logic that performs calculations, validation, database operations, or application-specific processing. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Template Inheritance | A feature that allows templates to reuse a common layout. |
+| `base.html` | The parent template containing the shared layout of a website. |
+| Child Template | A template that extends another template and provides content for its blocks. |
+| `{% extends %}` | A template tag that tells Django to inherit another template. |
+| `{% block %}` | A placeholder in a parent template that child templates replace with their own content. |
+
+## 💻 Software Design Terms
+
+| Term | Definition |
+|------|------------|
+| Reusability | The ability to write code once and use it in multiple places without duplication. |

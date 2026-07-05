@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DTL Example</title>
-</head>
-<body>
+{% extends "blog/base.html" %}
 
-<h1>{{ name|upper }}</h1>
+{% block content %}
 
-<p>{{ College|title }}</p>
+<h1>Welcome to Home Page</h1>
 
-<p>{{ Age }}</p>
+<p>This is the Home Page.</p>
 
-{# This is a Django Comment #}
-
-</body>
-</html>
+{% endblock %}
