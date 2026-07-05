@@ -1508,3 +1508,68 @@ Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Co
 ## Summary
 
 Template Inheritance allows Django templates to reuse a common layout through `base.html`. Child templates extend the parent template and replace predefined blocks with page-specific content, reducing duplication and improving maintainability.
+
+# Lesson 2.7 - Mini Project
+
+## Objective
+
+Build a professional multi-page Django website by combining:
+
+- Templates
+- render()
+- Context
+- Django Template Language (DTL)
+- Template Tags
+- Template Inheritance
+
+## Project Structure
+
+blog/
+├── templates/
+│   └── blog/
+│       ├── base.html
+│       ├── home.html
+│       ├── about.html
+│       └── contact.html
+
+## Workflow
+
+Browser
+→ HTTP Request
+→ Project urls.py
+→ include()
+→ App urls.py
+→ View
+→ Context Dictionary
+→ render()
+→ Child Template
+→ extends
+→ Base Template
+→ Replace Blocks
+→ Process DTL
+→ Generate Final HTML
+→ Create HttpResponse
+→ Browser
+
+## Concepts Used
+
+- render()
+- Context
+- Variables
+- Filters
+- if
+- for
+- empty
+- Template Inheritance
+
+## Important Points
+
+- base.html contains reusable layout.
+- Child templates contain page-specific content.
+- Context provides dynamic data.
+- DTL displays and formats data.
+- Template Tags add presentation logic.
+
+## Summary
+
+Day 2 combined Django's template system into a complete workflow. A request is routed to a View, which prepares Context data, renders a child template, inherits the layout from base.html, processes DTL, generates the final HTML, and returns an HttpResponse to the browser.    

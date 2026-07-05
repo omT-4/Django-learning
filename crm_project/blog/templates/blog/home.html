@@ -2,8 +2,34 @@
 
 {% block content %}
 
-<h1>Welcome to Home Page</h1>
+<h1>Welcome {{ name }}</h1>
 
-<p>This is the Home Page.</p>
+<p>City : {{ city }}</p>
+
+{% if is_logged_in %}
+
+<p>✅ You are Logged In</p>
+
+{% else %}
+
+<p>❌ Please Login</p>
+
+{% endif %}
+
+<h3>Available Pets</h3>
+
+<ul>
+
+{% for pet in pets %}
+
+<li>{{ pet }}</li>
+
+{% empty %}
+
+<li>No Pets Available</li>
+
+{% endfor %}
+
+</ul>
 
 {% endblock %}

@@ -140,3 +140,12 @@
 | Term | Definition |
 |------|------------|
 | Reusability | The ability to write code once and use it in multiple places without duplication. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Parent Template | The template (usually `base.html`) that defines the common layout. |
+| Child Template | A template that extends a parent template and provides content for its blocks. |
+| Block Replacement | The process where Django inserts child template content into the matching block of the parent template. |
+| Final HTML | The HTML generated after Django processes Template Inheritance, Context, and DTL. |
