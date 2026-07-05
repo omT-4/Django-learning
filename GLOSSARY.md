@@ -92,3 +92,19 @@
 |------|------------|
 | Dynamic Web Page | A webpage whose content changes based on data, user input, or database information. |
 | Static Web Page | A webpage that displays the same content to every visitor. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Django Template Language (DTL) | Django's template syntax used to display dynamic data and perform simple presentation logic. |
+| Template Variable | A placeholder written using `{{ }}` that displays data from the Context dictionary. |
+| Template Tag | A command written using `{% %}` that performs template logic such as loops and conditions. |
+| Filter | A template feature that changes how data is displayed without modifying the original value. |
+| Django Comment | A comment written using `{# #}` that is removed before the page reaches the browser. |
+
+## 💻 Software Design Terms
+
+| Term | Definition |
+|------|------------|
+| Separation of Concerns (SoC) | A design principle where each part of an application has a single, well-defined responsibility. Views process data, Templates present data, and Models manage the database. |

@@ -1238,3 +1238,99 @@ Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Co
 ## Summary
 
 Context is the bridge between Python and HTML. A View prepares data in a dictionary, `render()` passes it to the template, and Django replaces template variables with their corresponding values before sending the final HTML page to the browser.
+
+# Lesson 2.4 - Django Template Language (DTL)
+
+## Definition
+
+Django Template Language (DTL) is a special syntax used inside HTML templates to display dynamic data and perform simple presentation logic.
+
+## Why DTL?
+
+- HTML cannot display Python variables by itself.
+- Makes templates dynamic.
+- Keeps business logic separate from presentation.
+- Provides safe and simple template features.
+
+## DTL Components
+
+### Variables
+
+```html
+{{ name }}
+```
+
+Displays data from the Context dictionary.
+
+### Tags
+
+```html
+{% tag %}
+```
+
+Used for template logic such as loops and conditions.
+
+### Filters
+
+```html
+{{ name|upper }}
+```
+
+Modify how data is displayed without changing the original value.
+
+### Django Comments
+
+```html
+{# This is a comment #}
+```
+
+Removed before the response reaches the browser.
+
+## Common Filters
+
+| Filter | Purpose |
+|---------|---------|
+| `upper` | Convert text to uppercase |
+| `lower` | Convert text to lowercase |
+| `title` | Capitalize each word |
+
+## Internal Workflow
+
+View → Context → `render()` → Template → DTL Processes Variables/Tags/Filters → `HttpResponse` → Browser
+
+## Important Points
+
+- `{{ }}` displays variables.
+- `{% %}` performs template logic.
+- `{# #}` creates Django-only comments.
+- Filters modify display, not the original data.
+
+## Common Mistakes
+
+❌ Writing Python code directly inside templates.
+
+✔ Use DTL instead.
+
+---
+
+❌ Thinking filters modify the original Context.
+
+✔ Filters only affect how data is displayed.
+
+---
+
+❌ Using HTML comments for sensitive notes.
+
+✔ Use Django comments for server-side comments.
+
+## Interview Questions
+
+1. What is Django Template Language?
+2. Why does Django use DTL?
+3. What is the difference between Variables, Tags, and Filters?
+4. What is the purpose of Filters?
+5. What is the difference between HTML comments and Django comments?
+
+## Summary
+
+DTL extends HTML by allowing templates to display dynamic data and perform simple presentation logic. It provides Variables, Tags, Filters, and Django Comments while maintaining a clear separation between business logic and presentation.
