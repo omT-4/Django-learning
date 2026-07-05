@@ -64,3 +64,17 @@
 | Term | Definition |
 |------|------------|
 | Presentation Layer | The part of an application responsible for displaying information to the user (HTML, CSS, UI). |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Template Directory | The folder where Django searches for HTML templates. |
+| Template Path | The relative path passed to `render()`, such as `blog/home.html`. |
+| TemplateDoesNotExist | A Django exception raised when the requested template cannot be found. |
+
+## 🌐 Web Development Terms
+
+| Term | Definition |
+|------|------------|
+| Convention | A standard practice or recommended way of organizing code that frameworks expect developers to follow. |

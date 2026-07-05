@@ -3,11 +3,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return HttpResponse("🏠 Welcome to the Home Page!")
-
-def about(request):
-    return HttpResponse("ℹ️ This is the About Page.")
-
-def contact(request):
-    return HttpResponse("📞 Contact us at: contact@example.com")
+    return render(request, "blog/home.html")
 

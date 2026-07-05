@@ -1067,3 +1067,86 @@ View → `render()` → Locate Template → Read HTML → Create `HttpResponse` 
 ## Summary
 
 Templates allow Django applications to separate presentation from business logic. The `render()` function reads an HTML template, creates an `HttpResponse`, and sends the rendered page to the browser, making it the preferred way to build real-world web applications.
+
+# Lesson 2.2 - Templates Folder & Template Rendering
+
+## Definition
+
+Django Templates are stored inside a `templates` directory so that Django can locate and render HTML files efficiently.
+
+## Recommended Folder Structure
+
+```text
+blog/
+│
+├── templates/
+│   └── blog/
+│       └── home.html
+```
+
+Each app maintains its own template directory to avoid filename conflicts.
+
+## Why `templates/blog/`?
+
+Large projects often contain multiple apps.
+
+Example:
+
+```text
+blog/home.html
+shop/home.html
+```
+
+By storing templates inside app-specific folders, Django can uniquely identify each template.
+
+## Rendering a Template
+
+```python
+from django.shortcuts import render
+
+def home(request):
+    return render(request, "blog/home.html")
+```
+
+## Internal Workflow
+
+View → `render()` → Locate `templates/blog/home.html` → Read HTML → Create `HttpResponse` → Browser
+
+## Why Not Store HTML Anywhere?
+
+Django follows a convention:
+
+- Search only in template directories.
+- Avoid searching the entire project.
+- Improve performance and maintainability.
+
+## Important Points
+
+- Store templates inside the `templates` folder.
+- Use an app-specific folder inside `templates`.
+- Pass the relative path (`blog/home.html`) to `render()`.
+- Missing templates raise a `TemplateDoesNotExist` exception.
+
+## Common Mistakes
+
+❌ Placing HTML files outside the `templates` directory.
+
+✔ Always store templates inside `templates/app_name/`.
+
+---
+
+❌ Using only `home.html` when multiple apps contain templates with the same name.
+
+✔ Use `app_name/home.html`.
+
+## Interview Questions
+
+1. Why do we create a `templates` folder?
+2. Why is there an app folder inside `templates`?
+3. How does Django locate templates?
+4. What happens if a template file is missing?
+5. Why does Django follow a standard template directory structure?
+
+## Summary
+
+Django locates templates by searching designated `templates` directories. Organizing templates inside `templates/app_name/` avoids conflicts, improves maintainability, and allows Django to render the correct HTML page efficiently.
