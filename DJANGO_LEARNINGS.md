@@ -1150,3 +1150,91 @@ Django follows a convention:
 ## Summary
 
 Django locates templates by searching designated `templates` directories. Organizing templates inside `templates/app_name/` avoids conflicts, improves maintainability, and allows Django to render the correct HTML page efficiently.
+
+# Lesson 2.3 - Passing Data to Templates (Context)
+
+## Definition
+
+Context is a Python dictionary used to send data from a View to a Django Template.
+
+## Why Context?
+
+- HTML cannot execute Python code.
+- Makes web pages dynamic.
+- Allows different users to see different data.
+- Separates business logic from presentation.
+
+## Creating Context
+
+```python
+context = {
+    "name": "Om",
+    "city": "Mumbai"
+}
+```
+
+## Passing Context
+
+```python
+return render(request, "blog/home.html", context)
+```
+
+## Accessing Context in HTML
+
+```html
+<h1>Welcome {{ name }}</h1>
+<p>City: {{ city }}</p>
+```
+
+## `render()` Arguments
+
+```python
+render(request, template_name, context)
+```
+
+| Argument | Purpose |
+|----------|---------|
+| `request` | HttpRequest object provided by Django |
+| `template_name` | HTML template to render |
+| `context` | Dictionary containing data for the template |
+
+## Internal Workflow
+
+Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Context Dictionary → `render()` → Template → Replace Variables → Create `HttpResponse` → Browser
+
+## Important Points
+
+- Context is always a dictionary.
+- Keys in the dictionary become template variables.
+- Template variable names must match dictionary keys.
+- Context makes templates dynamic.
+
+## Common Mistakes
+
+❌ Forgetting to pass the context dictionary.
+
+✔ Pass the dictionary as the third argument to `render()`.
+
+---
+
+❌ Using different names in the template and context.
+
+✔ Ensure dictionary keys match template variable names.
+
+---
+
+❌ Expecting HTML to execute Python.
+
+✔ HTML only displays the data Django passes through Context.
+
+## Interview Questions
+
+1. What is Context?
+2. Why does Django use Context?
+3. Why is Context a dictionary?
+4. How do templates access Context values?
+5. What happens if a template variable does not exist?
+
+## Summary
+
+Context is the bridge between Python and HTML. A View prepares data in a dictionary, `render()` passes it to the template, and Django replaces template variables with their corresponding values before sending the final HTML page to the browser.

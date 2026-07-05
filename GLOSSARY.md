@@ -78,3 +78,17 @@
 | Term | Definition |
 |------|------------|
 | Convention | A standard practice or recommended way of organizing code that frameworks expect developers to follow. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Context | A Python dictionary used to pass data from a View to a Template. |
+| Template Variable | A placeholder written using `{{ }}` that Django replaces with data from the Context dictionary. |
+
+## 🌐 Web Development Terms
+
+| Term | Definition |
+|------|------------|
+| Dynamic Web Page | A webpage whose content changes based on data, user input, or database information. |
+| Static Web Page | A webpage that displays the same content to every visitor. |
