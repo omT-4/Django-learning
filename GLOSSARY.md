@@ -108,3 +108,19 @@
 | Term | Definition |
 |------|------------|
 | Separation of Concerns (SoC) | A design principle where each part of an application has a single, well-defined responsibility. Views process data, Templates present data, and Models manage the database. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Template Tag | A DTL command that performs presentation logic inside a template. |
+| `{% if %}` | Displays content conditionally. |
+| `{% for %}` | Repeats content for each item in a collection. |
+| `{% empty %}` | Displays fallback content when a collection is empty. |
+
+## 💻 Software Design Terms
+
+| Term | Definition |
+|------|------------|
+| Presentation Logic | Logic that controls how information is displayed to the user, such as loops, conditions, and formatting. |
+| Business Logic | Logic that performs calculations, validation, database operations, or application-specific processing. |

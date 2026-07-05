@@ -1334,3 +1334,84 @@ View → Context → `render()` → Template → DTL Processes Variables/Tags/Fi
 ## Summary
 
 DTL extends HTML by allowing templates to display dynamic data and perform simple presentation logic. It provides Variables, Tags, Filters, and Django Comments while maintaining a clear separation between business logic and presentation.
+
+# Lesson 2.5 - Template Tags (`if`, `for`, `empty`)
+
+## Definition
+
+Template Tags add simple presentation logic to Django Templates. They allow templates to make decisions, repeat content, and control what is displayed.
+
+## Why Template Tags?
+
+- Display content conditionally.
+- Repeat HTML without duplication.
+- Keep templates dynamic while leaving business logic in Views.
+
+## `if` Tag
+
+```html
+{% if is_logged_in %}
+    <p>Welcome!</p>
+{% else %}
+    <p>Please Login.</p>
+{% endif %}
+```
+
+Used for conditional rendering.
+
+## `for` Tag
+
+```html
+{% for fruit in fruits %}
+    <li>{{ fruit }}</li>
+{% endfor %}
+```
+
+Repeats HTML for every item in a collection.
+
+## `empty` Tag
+
+```html
+{% for fruit in fruits %}
+    <li>{{ fruit }}</li>
+{% empty %}
+    <li>No Fruits Available</li>
+{% endfor %}
+```
+
+Displays fallback content when the collection is empty.
+
+## Internal Workflow
+
+Browser → HTTP Request → Project `urls.py` → App `urls.py` → View → Create Context → `render()` → Template → Execute Tags → Create `HttpResponse` → Browser
+
+## Important Points
+
+- `{% if %}` controls conditional display.
+- `{% for %}` repeats content.
+- `{% empty %}` handles empty collections.
+- Template Tags should contain only presentation logic.
+
+## Common Mistakes
+
+❌ Writing business logic inside templates.
+
+✔ Keep calculations, database queries, and processing inside Views.
+
+---
+
+❌ Writing repetitive HTML manually.
+
+✔ Use `{% for %}` loops.
+
+## Interview Questions
+
+1. What are Template Tags?
+2. Why does Django provide `{% if %}` and `{% for %}`?
+3. What is the purpose of `{% empty %}`?
+4. What is the difference between presentation logic and business logic?
+5. Why should complex logic remain inside Views?
+
+## Summary
+
+Template Tags allow Django Templates to perform simple presentation logic such as conditions and loops. They make templates dynamic while maintaining a clear separation between presentation and business logic.
