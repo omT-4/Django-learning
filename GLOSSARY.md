@@ -50,3 +50,17 @@
 | Term | Definition |
 |------|------------|
 | Request Lifecycle | The complete journey of an HTTP request from the browser to the server and back. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Template | An HTML file that defines how a webpage should look. |
+| `render()` | A Django helper function that loads a template, creates an `HttpResponse`, and returns it to the browser. |
+| `django.shortcuts` | A Django module containing helper functions that simplify common development tasks. |
+
+## 🌐 Web Development Terms
+
+| Term | Definition |
+|------|------------|
+| Presentation Layer | The part of an application responsible for displaying information to the user (HTML, CSS, UI). |

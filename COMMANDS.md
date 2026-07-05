@@ -190,3 +190,7 @@ http://127.0.0.1:8000/
 ### Interview Tip
 
 `runserver` is intended for development only. It should not be used as the production web server.
+
+# Lesson 2.1 - Commands
+
+**No new Django commands were introduced in this lesson.**

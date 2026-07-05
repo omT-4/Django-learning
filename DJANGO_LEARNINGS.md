@@ -988,3 +988,82 @@ Browser → HTTP Request → Project `urls.py` → `include()` → App `urls.py`
 ## Summary
 
 A Django application works by routing incoming requests from the browser through the project's `urls.py`, then the app's `urls.py`, which maps the request to a specific View. The View processes the request and returns an `HttpResponse`, which Django sends back to the browser.
+
+# Lesson 2.1 - Templates & render()
+
+## Definition
+
+A Django Template is an HTML file that defines how a webpage should look. Templates separate the presentation (HTML) from the application's business logic (Python).
+
+## Why Templates?
+
+- Keep HTML separate from Python code.
+- Improve readability and maintainability.
+- Make collaboration between frontend and backend developers easier.
+- Avoid writing HTML inside `HttpResponse()`.
+
+## `render()`
+
+`render()` is a helper function provided by Django that loads an HTML template, converts it into an `HttpResponse`, and returns it to the browser.
+
+## Import
+
+```python
+from django.shortcuts import render
+```
+
+## Basic Syntax
+
+```python
+return render(request, "home.html")
+```
+
+## Argument Breakdown
+
+| Argument | Purpose |
+|----------|---------|
+| `request` | The `HttpRequest` object automatically passed by Django |
+| `"home.html"` | The template file to render |
+
+## Internal Workflow
+
+View → `render()` → Locate Template → Read HTML → Create `HttpResponse` → Browser
+
+## `HttpResponse()` vs `render()`
+
+| `HttpResponse()` | `render()` |
+|------------------|------------|
+| Returns plain text or raw HTML | Returns a rendered HTML template |
+| HTML is written inside Python | HTML is stored in a separate file |
+| Suitable for simple responses | Suitable for complete web pages |
+
+## Important Points
+
+- Templates are HTML files.
+- `render()` loads templates and returns an `HttpResponse`.
+- `render()` does not replace `HttpResponse`; it uses it internally.
+- Separating logic from presentation keeps projects clean and maintainable.
+
+## Common Mistakes
+
+❌ Writing large HTML blocks inside `HttpResponse()`.
+
+✔ Store HTML inside template files and use `render()`.
+
+---
+
+❌ Thinking `render()` directly sends HTML.
+
+✔ `render()` first creates an `HttpResponse`, then Django sends it to the browser.
+
+## Interview Questions
+
+1. What is a Django Template?
+2. What is the purpose of `render()`?
+3. What is the difference between `HttpResponse()` and `render()`?
+4. Why does Django encourage separating HTML from Python?
+5. What happens if the template file is missing?
+
+## Summary
+
+Templates allow Django applications to separate presentation from business logic. The `render()` function reads an HTML template, creates an `HttpResponse`, and sends the rendered page to the browser, making it the preferred way to build real-world web applications.
