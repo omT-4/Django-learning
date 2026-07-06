@@ -1,35 +1,21 @@
-{% extends "blog/base.html" %}
+<h1>Pet List</h1>
 
-{% block content %}
+{% if pets %}
 
-<h1>Welcome {{ name }}</h1>
+    {% for pet in pets %}
 
-<p>City : {{ city }}</p>
+        <h3>{{ pet.name }}</h3>
 
-{% if is_logged_in %}
+        <p>Species : {{ pet.species }}</p>
 
-<p>✅ You are Logged In</p>
+        <p>Age : {{ pet.age }}</p>
+
+        <hr>
+
+    {% endfor %}
 
 {% else %}
 
-<p>❌ Please Login</p>
+    <h3>No pets available.</h3>
 
 {% endif %}
-
-<h3>Available Pets</h3>
-
-<ul>
-
-{% for pet in pets %}
-
-<li>{{ pet }}</li>
-
-{% empty %}
-
-<li>No Pets Available</li>
-
-{% endfor %}
-
-</ul>
-
-{% endblock %}

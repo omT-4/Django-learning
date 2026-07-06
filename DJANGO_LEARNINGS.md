@@ -2042,3 +2042,102 @@ The ORM generates this SQL automatically.
 ## Summary
 
 The Django ORM retrieves database records as Python objects. `Pet.objects.all()` returns a QuerySet containing every record in the `Pet` table, allowing Views to pass dynamic data to Templates without writing SQL.
+
+# Module 3.7 - Displaying Database Data
+
+## Definition
+
+A QuerySet retrieved by the ORM is passed through Context to a Template, where Django Template Language (DTL) displays the data as HTML.
+
+## View Example
+
+```python
+from django.shortcuts import render
+from .models import Pet
+
+def home(request):
+    pets = Pet.objects.all()
+
+    return render(
+        request,
+        "blog/home.html",
+        {
+            "pets": pets
+        }
+    )
+```
+
+## Template Example
+
+```html
+<h1>Pet List</h1>
+
+{% if pets %}
+
+    {% for pet in pets %}
+
+        <h3>{{ pet.name }}</h3>
+        <p>Species: {{ pet.species }}</p>
+        <p>Age: {{ pet.age }}</p>
+
+    {% endfor %}
+
+{% else %}
+
+    <h3>No pets available.</h3>
+
+{% endif %}
+```
+
+## Internal Workflow
+
+Browser
+→ Request
+→ View
+→ ORM
+→ SQL
+→ Database
+→ QuerySet
+→ Context
+→ render()
+→ Template
+→ Generated HTML
+→ Browser
+
+## Important Points
+
+- `.all()` returns a QuerySet.
+- QuerySets contain Model objects.
+- Context carries the QuerySet to the Template.
+- `{% for %}` loops over QuerySets.
+- `{{ }}` displays object fields.
+
+## Common Mistakes
+
+❌ Using `{{ pets.name }}`.
+
+✔ Use `{{ pet.name }}` inside the loop.
+
+---
+
+❌ Forgetting `{% endfor %}`.
+
+✔ Every loop must be closed.
+
+---
+
+❌ Writing Python syntax inside DTL.
+
+✔ DTL has its own syntax.
+
+## Interview Questions
+
+1. What is a QuerySet?
+2. How does a View send data to a Template?
+3. Why do we use `{% for %}`?
+4. Why can't we access `pets.name`?
+5. Explain the complete request lifecycle from database to browser.
+
+## Summary
+
+The View retrieves records using the ORM, stores them in Context, and passes them to the Template. Django Template Language loops through the QuerySet and generates dynamic HTML that is sent back to the Browser.

@@ -242,3 +242,18 @@
 |------|------------|
 | Retrieval | The process of reading data from the database. |
 | SQL Query | A command sent to the database to retrieve or manipulate data. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| QuerySet | A collection of Model objects returned by the ORM. |
+| Context | A dictionary used to send data from a View to a Template. |
+| `{% for %}` | A Django Template Language tag used to iterate over collections. |
+| `{{ }}` | Displays the value of a variable or Model field in a Template. |
+
+## 🌐 Web Terms
+
+| Term | Definition |
+|------|------------|
+| Dynamic HTML | HTML generated using data from the database instead of hardcoded values. |

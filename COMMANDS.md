@@ -308,3 +308,27 @@ Pet.objects.all()
 ```
 
 **Purpose:** Retrieves all records from the `Pet` table as a QuerySet.
+
+# Module 3.7 - Commands
+
+**No new terminal commands were introduced in this module.**
+
+## Common ORM Retrieval
+
+```python
+Pet.objects.all()
+```
+
+**Purpose:** Retrieves all records.
+
+---
+
+## DTL Loop
+
+```html
+{% for pet in pets %}
+    {{ pet.name }}
+{% endfor %}
+```
+
+**Purpose:** Iterates through a QuerySet and displays each object's data.
