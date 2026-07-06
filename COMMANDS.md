@@ -218,3 +218,7 @@ http://127.0.0.1:8000/
 # Lesson 2.7 - Commands
 
 **No new Django commands were introduced in this lesson.**
+
+# Module 3.1 - Commands
+
+**No Django commands were introduced in this lesson.**

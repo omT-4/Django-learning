@@ -149,3 +149,20 @@
 | Child Template | A template that extends a parent template and provides content for its blocks. |
 | Block Replacement | The process where Django inserts child template content into the matching block of the parent template. |
 | Final HTML | The HTML generated after Django processes Template Inheritance, Context, and DTL. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Model | A Python class that defines the structure of a database table. |
+| ORM (Object Relational Mapper) | Django's layer that translates Python code into SQL and SQL results back into Python objects. |
+| Database | A permanent storage system for organized data. |
+
+## 💾 Database Terms
+
+| Term | Definition |
+|------|------------|
+| Table | A collection of related records in a database. |
+| Row (Record) | A single entry in a table. |
+| Column (Field) | A specific attribute of each record. |
+| CRUD | Create, Read, Update, Delete — the four basic database operations. |

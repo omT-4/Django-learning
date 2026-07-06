@@ -1573,3 +1573,89 @@ Browser
 ## Summary
 
 Day 2 combined Django's template system into a complete workflow. A request is routed to a View, which prepares Context data, renders a child template, inherits the layout from base.html, processes DTL, generates the final HTML, and returns an HttpResponse to the browser.    
+
+# Module 3.1 - Introduction to Databases, Models & ORM
+
+## Definition
+
+A Database is an organized collection of data that stores information permanently.
+
+A Model is a Python class that defines the structure of a database table.
+
+ORM (Object Relational Mapper) translates Python code into SQL and converts database results back into Python objects.
+
+## Why Databases?
+
+- Variables are temporary.
+- Data disappears when the program ends.
+- Databases store information permanently.
+
+## Database Terminology
+
+| Term | Meaning |
+|------|---------|
+| Database | Collection of organized data |
+| Table | Stores similar records |
+| Row (Record) | One complete entry |
+| Column (Field) | One attribute of a record |
+
+## Model
+
+```python
+class Pet(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+```
+
+A Model defines the blueprint of a database table.
+
+## ORM
+
+```python
+Pet.objects.all()
+```
+
+Django ORM converts this Python code into SQL automatically.
+
+## Internal Execution
+
+View → Model → ORM → SQL → Database → SQL Result → ORM → Python Objects → View → Context → render() → Template → Browser
+
+## CRUD Operations
+
+- Create → Add data
+- Read → Retrieve data
+- Update → Modify data
+- Delete → Remove data
+
+## Important Points
+
+- Models define structure.
+- Databases store data.
+- ORM connects Python and SQL.
+- Variables are temporary; databases are permanent.
+
+## Common Mistakes
+
+❌ Thinking Models store data.
+
+✔ Models only define the table structure.
+
+---
+
+❌ Thinking ORM stores data.
+
+✔ ORM translates between Python and SQL.
+
+## Interview Questions
+
+1. What is a Database?
+2. What is a Model?
+3. What is ORM?
+4. Why does Django use Models?
+5. Why is ORM useful?
+6. Explain the relationship between Models, ORM, and the Database.
+
+## Summary
+
+Models define the database structure, ORM translates Python operations into SQL, and the database stores information permanently. Together they allow Django developers to work with databases using Python instead of writing raw SQL.
