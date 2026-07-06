@@ -1894,3 +1894,73 @@ Developer → Model → Migration → Database → Register Model → Admin Pane
 ## Summary
 
 Django Admin provides a ready-made administration interface for managing database records. Superusers can access the Admin Panel, and registered Models become available for CRUD operations without requiring custom HTML pages.
+
+# Module 3.5 - Adding Data Through Django Admin
+
+## Definition
+
+A Record (Row) is one complete entry inside a database table.
+
+Django Admin allows administrators to perform CRUD operations on database records through a web interface.
+
+## Example
+
+Pet Table
+
+| ID | Name | Species | Age |
+|----|------|----------|-----|
+| 1 | Bruno | Dog | 3 |
+| 2 | Luna | Cat | 2 |
+
+Each row is one Record.
+
+## Save Workflow
+
+Browser
+→ Admin Form
+→ Validate Input
+→ Create Model Object
+→ ORM
+→ Generate SQL
+→ Database
+→ Save Record
+→ Success Response
+→ Browser
+
+## CRUD Operations
+
+- Create → Add a new record.
+- Read → View existing records.
+- Update → Modify an existing record.
+- Delete → Remove a record.
+
+## Important Points
+
+- Models define the table.
+- Records store actual data.
+- Django Admin uses the ORM internally.
+- IDs are generated automatically and uniquely.
+
+## Common Mistakes
+
+❌ Assuming Admin directly writes SQL.
+
+✔ Admin uses the ORM to generate SQL.
+
+---
+
+❌ Thinking visitors use Django Admin.
+
+✔ Django Admin is for authorized administrators only.
+
+## Interview Questions
+
+1. What is a Record?
+2. Difference between a Model and a Record?
+3. What happens when Save is clicked?
+4. Why are IDs automatically generated?
+5. Why is Django Admin useful during development?
+
+## Summary
+
+Django Admin allows administrators to create, read, update, and delete database records without writing SQL. The ORM translates Model operations into SQL, while the database stores the actual records.

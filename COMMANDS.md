@@ -276,3 +276,23 @@ http://127.0.0.1:8000/admin/
 ```
 
 **Purpose:** Opens the Django Admin login page.
+
+# Module 3.5 - Commands
+
+## Start Development Server
+
+```bash
+python manage.py runserver
+```
+
+Starts Django's development server.
+
+---
+
+## Admin URL
+
+```
+http://127.0.0.1:8000/admin/
+```
+
+Opens the Django Admin interface.

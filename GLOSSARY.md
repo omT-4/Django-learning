@@ -212,3 +212,18 @@
 |------|------------|
 | Authorization | Determining what actions a user is allowed to perform. |
 | Principle of Least Privilege | A security principle stating that users should be given only the minimum permissions required to perform their job. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Record (Row) | One complete entry in a database table. |
+| Validation | The process of checking whether input data satisfies the Model's field requirements before saving. |
+| Admin Form | The automatically generated form used by Django Admin to create or edit records. |
+
+## 💾 Database Terms
+
+| Term | Definition |
+|------|------------|
+| Auto Increment | A database feature that automatically generates unique IDs for new records. |
+| Data Integrity | Ensuring stored data remains accurate, consistent, and reliable. |
