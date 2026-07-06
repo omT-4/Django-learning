@@ -246,3 +246,33 @@ python manage.py migrate
 ```
 
 **Purpose:** Execute pending migration files and update the database schema.
+
+# Module 3.4 - Commands
+
+## Create Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+**Purpose:** Creates an administrator account with full permissions.
+
+---
+
+## Start Development Server
+
+```bash
+python manage.py runserver
+```
+
+**Purpose:** Starts Django's development server so the Admin Panel can be accessed.
+
+---
+
+## Admin URL
+
+```
+http://127.0.0.1:8000/admin/
+```
+
+**Purpose:** Opens the Django Admin login page.

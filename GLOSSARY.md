@@ -197,3 +197,18 @@
 |------|------------|
 | Schema | The structure of a database, including tables and columns. |
 | Pending Migration | A migration that has been created but not yet applied to the database. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Django Admin | Django's built-in administration interface for managing database records. |
+| Superuser | A user account with full administrative permissions. |
+| Model Registration | The process of making a Model available in the Django Admin Panel using `admin.site.register()`. |
+
+## 🔐 Security Terms
+
+| Term | Definition |
+|------|------------|
+| Authorization | Determining what actions a user is allowed to perform. |
+| Principle of Least Privilege | A security principle stating that users should be given only the minimum permissions required to perform their job. |

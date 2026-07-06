@@ -1821,3 +1821,76 @@ Developer → Edit Model → Save → `makemigrations` → Migration File → `m
 ## Summary
 
 Migrations safely translate Model changes into database schema changes. `makemigrations` creates migration instructions, while `migrate` executes them to update the database.
+
+# Module 3.4 - Django Admin & Superuser
+
+## Definition
+
+Django Admin is Django's built-in web interface that allows authorized administrators to manage database records.
+
+A Superuser is an administrator with full permissions.
+
+## Create a Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+After entering a username, email, and password, Django creates an administrator account.
+
+## Registering a Model
+
+```python
+from django.contrib import admin
+from .models import Pet
+
+admin.site.register(Pet)
+```
+
+Only registered Models appear in the Admin Panel.
+
+## Internal Workflow
+
+Developer → Model → Migration → Database → Register Model → Admin Panel → ORM → Database
+
+## Why Register Models?
+
+- Prevent accidental exposure of sensitive data.
+- Give developers control over what appears in the Admin Panel.
+
+## Important Points
+
+- Django Admin is built into every Django project.
+- A Superuser has complete administrative privileges.
+- Models must be registered before they appear in the Admin Panel.
+- The Admin Panel communicates with the database through Django's ORM.
+
+## Common Mistakes
+
+❌ Creating a Superuser before running migrations.
+
+✔ Run migrations first.
+
+---
+
+❌ Forgetting to register a Model.
+
+✔ Use `admin.site.register(ModelName)`.
+
+---
+
+❌ Giving unnecessary Superuser access.
+
+✔ Follow the Principle of Least Privilege (users should have only the permissions they need).
+
+## Interview Questions
+
+1. What is Django Admin?
+2. What is a Superuser?
+3. Why must Models be registered?
+4. How does Django Admin communicate with the database?
+5. Why shouldn't every employee be a Superuser?
+
+## Summary
+
+Django Admin provides a ready-made administration interface for managing database records. Superusers can access the Admin Panel, and registered Models become available for CRUD operations without requiring custom HTML pages.
