@@ -166,3 +166,18 @@
 | Row (Record) | A single entry in a table. |
 | Column (Field) | A specific attribute of each record. |
 | CRUD | Create, Read, Update, Delete — the four basic database operations. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Model | A Python class that defines the structure of a database table. |
+| Field | A model attribute that becomes a column in the database table. |
+| `models.Model` | Django's base class that provides database functionality to Models. |
+| Metadata | Information Django stores internally about a Model before creating a database table. |
+
+## 💾 Database Terms
+
+| Term | Definition |
+|------|------------|
+| Schema | The structure or blueprint of a database table, including its fields and data types. |

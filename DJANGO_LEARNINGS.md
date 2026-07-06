@@ -1659,3 +1659,79 @@ View → Model → ORM → SQL → Database → SQL Result → ORM → Python Ob
 ## Summary
 
 Models define the database structure, ORM translates Python operations into SQL, and the database stores information permanently. Together they allow Django developers to work with databases using Python instead of writing raw SQL.
+
+# Module 3.2 - Creating Your First Model
+
+## Definition
+
+A Django Model is a Python class that defines the structure of a database table.
+
+## Model Location
+
+Every Django app contains a `models.py` file where Models are created.
+
+## Basic Model
+
+```python
+from django.db import models
+
+class Pet(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+    age = models.IntegerField()
+```
+
+## Components
+
+| Component | Purpose |
+|----------|---------|
+| `class Pet` | Defines the Model |
+| `models.Model` | Gives the class Django Model capabilities |
+| `CharField` | Stores short text |
+| `IntegerField` | Stores whole numbers |
+
+## Why Inherit from `models.Model`?
+
+Inheritance gives the class:
+
+- ORM integration
+- Database support
+- Query methods
+- Automatic ID field
+- Migration support
+- Save/Delete functionality
+
+## Internal Workflow
+
+Developer → Model Class → Django Reads Fields → Creates Model Metadata → Waits for Migration
+
+## Important Points
+
+- Models define structure, not data.
+- Every field becomes a database column.
+- Django automatically creates an `id` field.
+- Choose field types carefully to match the data.
+
+## Common Mistakes
+
+❌ Thinking a Model immediately creates a table.
+
+✔ A Model only defines the blueprint. Migrations create the table.
+
+---
+
+❌ Using `CharField` for numeric values.
+
+✔ Use `IntegerField` or another numeric field when appropriate.
+
+## Interview Questions
+
+1. What is a Django Model?
+2. Why do Models inherit from `models.Model`?
+3. What is a Field?
+4. Why do we use `CharField(max_length=...)`?
+5. Why is choosing the correct field type important?
+
+## Summary
+
+A Model is a Python blueprint that describes the structure of a database table. Fields define columns, inheritance gives Django-specific database functionality, and the Model is later converted into a real table through migrations.
