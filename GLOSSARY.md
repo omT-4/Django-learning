@@ -181,3 +181,19 @@
 | Term | Definition |
 |------|------------|
 | Schema | The structure or blueprint of a database table, including its fields and data types. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Migration | A set of instructions describing database schema changes. |
+| `makemigrations` | Generates migration files from Model changes. |
+| `migrate` | Applies pending migrations to the database. |
+| Migration File | A versioned Python file containing database schema operations. |
+
+## 💾 Database Terms
+
+| Term | Definition |
+|------|------------|
+| Schema | The structure of a database, including tables and columns. |
+| Pending Migration | A migration that has been created but not yet applied to the database. |

@@ -1735,3 +1735,89 @@ Developer → Model Class → Django Reads Fields → Creates Model Metadata →
 ## Summary
 
 A Model is a Python blueprint that describes the structure of a database table. Fields define columns, inheritance gives Django-specific database functionality, and the Model is later converted into a real table through migrations.
+
+# Module 3.3 - Migrations
+
+## Definition
+
+A Migration is a set of instructions that tells Django how to create or modify database tables based on changes made to Models.
+
+## Why Migrations?
+
+- Safely update database structure.
+- Prevent accidental data loss.
+- Keep database schema versioned.
+- Allow teams to share database changes.
+
+## `makemigrations`
+
+```bash
+python manage.py makemigrations
+```
+
+Creates migration files by comparing the current Models with the previous state.
+
+**Does not modify the database.**
+
+## `migrate`
+
+```bash
+python manage.py migrate
+```
+
+Executes pending migration files and updates the database schema.
+
+## Migration Folder
+
+Example:
+
+```text
+migrations/
+│
+├── __init__.py
+├── 0001_initial.py
+├── 0002_add_phone.py
+```
+
+Each file records one database change.
+
+## Internal Workflow
+
+Developer → Edit Model → Save → `makemigrations` → Migration File → `migrate` → Database Updated
+
+## Important Points
+
+- Models define structure.
+- Migration files record changes.
+- `migrate` applies those changes.
+- Database updates only after `migrate`.
+
+## Common Mistakes
+
+❌ Editing Models without creating migrations.
+
+✔ Run `makemigrations`.
+
+---
+
+❌ Creating migrations but forgetting `migrate`.
+
+✔ Apply pending migrations.
+
+---
+
+❌ Deleting migration files manually.
+
+✔ Only do so if you fully understand the migration history.
+
+## Interview Questions
+
+1. What is a Migration?
+2. Why are `makemigrations` and `migrate` separate commands?
+3. What is stored in the `migrations` folder?
+4. Why doesn't Django update the database automatically?
+5. What happens if you forget to run `migrate`?
+
+## Summary
+
+Migrations safely translate Model changes into database schema changes. `makemigrations` creates migration instructions, while `migrate` executes them to update the database.

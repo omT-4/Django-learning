@@ -226,3 +226,23 @@ http://127.0.0.1:8000/
 # Module 3.2 - Commands
 
 **No Django commands were introduced in this lesson.**
+
+# Module 3.3 - Commands
+
+## Create Migration Files
+
+```bash
+python manage.py makemigrations
+```
+
+**Purpose:** Detect changes in Models and generate migration files.
+
+---
+
+## Apply Migrations
+
+```bash
+python manage.py migrate
+```
+
+**Purpose:** Execute pending migration files and update the database schema.
