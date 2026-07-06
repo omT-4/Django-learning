@@ -296,3 +296,15 @@ http://127.0.0.1:8000/admin/
 ```
 
 Opens the Django Admin interface.
+
+# Module 3.6 - Commands
+
+**No new terminal commands were introduced in this module.**
+
+## Common ORM Retrieval
+
+```python
+Pet.objects.all()
+```
+
+**Purpose:** Retrieves all records from the `Pet` table as a QuerySet.

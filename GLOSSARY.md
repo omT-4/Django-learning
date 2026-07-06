@@ -227,3 +227,18 @@
 |------|------------|
 | Auto Increment | A database feature that automatically generates unique IDs for new records. |
 | Data Integrity | Ensuring stored data remains accurate, consistent, and reliable. |
+
+## 📚 Django Terms
+
+| Term | Definition |
+|------|------------|
+| Query | A request made to retrieve data from the database. |
+| QuerySet | A collection of Model objects returned by the ORM. |
+| Manager (`objects`) | Django's default interface for querying Model records. |
+
+## 💾 Database Terms
+
+| Term | Definition |
+|------|------------|
+| Retrieval | The process of reading data from the database. |
+| SQL Query | A command sent to the database to retrieve or manipulate data. |

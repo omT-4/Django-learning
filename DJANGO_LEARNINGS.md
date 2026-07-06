@@ -1964,3 +1964,81 @@ Browser
 ## Summary
 
 Django Admin allows administrators to create, read, update, and delete database records without writing SQL. The ORM translates Model operations into SQL, while the database stores the actual records.
+
+# Module 3.6 - Django ORM: Retrieving Data
+
+## Definition
+
+A Query is a request for data.
+
+A QuerySet is a collection of Model objects returned by the Django ORM.
+
+## Retrieve All Records
+
+```python
+from .models import Pet
+
+pets = Pet.objects.all()
+```
+
+## Components
+
+| Component | Purpose |
+|----------|---------|
+| `Pet` | Django Model representing the database table |
+| `objects` | Default manager used to interact with Model records |
+| `.all()` | Retrieves every record from the table |
+
+## Internal Workflow
+
+Browser
+→ Request
+→ View
+→ `Pet.objects.all()`
+→ ORM
+→ SQL Query
+→ Database
+→ QuerySet
+→ Context
+→ render()
+→ Template
+→ Browser
+
+## SQL Equivalent
+
+```sql
+SELECT * FROM Pet;
+```
+
+The ORM generates this SQL automatically.
+
+## Important Points
+
+- `.all()` returns a QuerySet, not a single object.
+- A QuerySet contains Model objects.
+- The ORM converts database rows into Python objects.
+- Use the ORM instead of writing raw SQL for most applications.
+
+## Common Mistakes
+
+❌ Assuming `.all()` returns one record.
+
+✔ It returns a QuerySet containing all matching records.
+
+---
+
+❌ Confusing the Model with the database table.
+
+✔ The Model represents the table; the ORM works through the Model.
+
+## Interview Questions
+
+1. What is a Query?
+2. What is a QuerySet?
+3. What is the purpose of `objects`?
+4. What does `.all()` return?
+5. Why is the ORM preferred over raw SQL?
+
+## Summary
+
+The Django ORM retrieves database records as Python objects. `Pet.objects.all()` returns a QuerySet containing every record in the `Pet` table, allowing Views to pass dynamic data to Templates without writing SQL.

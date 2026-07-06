@@ -1,22 +1,20 @@
 from django.shortcuts import render
 
+from django.shortcuts import render
+from .models import Pet
+
+
 def home(request):
 
-    context = {
+    pets = Pet.objects.all()
 
-        "name":"Om",
-
-        "city":"Mumbai",
-
-        "is_logged_in":True,
-
-        "pets":[
-            "Dog",
-            "Cat",
-            "Rabbit"
-        ]
-
-    }
+    return render(
+        request,
+        "blog/home.html",
+        {
+            "pets": pets
+        }
+    )
 
     return render(request,"blog/home.html",context)
 
