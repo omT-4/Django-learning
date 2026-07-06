@@ -2140,4 +2140,46 @@ Browser
 
 ## Summary
 
-The View retrieves records using the ORM, stores them in Context, and passes them to the Template. Django Template Language loops through the QuerySet and generates dynamic HTML that is sent back to the Browser.
+The View retrieves records using the ORM, stores them in Context, and passes them to the Template. Django Template Language loops through the QuerySet and generates dynamic HTML that is sent back to the Browser. 
+
+# Module 3.8 - Mini Project: Pet Directory
+
+## Project Goal
+
+Build a complete Django application that retrieves Pet records from the database and displays them dynamically in a web page.
+
+## Complete Django Pipeline
+
+Browser
+→ Request
+→ Project URLs
+→ App URLs
+→ View
+→ ORM
+→ Database
+→ QuerySet
+→ Context
+→ render()
+→ Template
+→ Generated HTML
+→ Browser
+
+## Components Used
+
+- Model (`Pet`)
+- Migrations
+- Django Admin
+- ORM (`Pet.objects.all()`)
+- Context
+- Template (`{% for %}`)
+- DTL (`{{ }}`)
+
+## Design Principles
+
+- Single Responsibility Principle (SRP)
+- Separation of Concerns
+- MVT Architecture
+
+## Summary
+
+This project combines every concept learned in Days 1–3 into one complete request lifecycle, demonstrating how Django routes a request, retrieves data from the database, and generates dynamic HTML for the browser.

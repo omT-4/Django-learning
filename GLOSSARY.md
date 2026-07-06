@@ -257,3 +257,17 @@
 | Term | Definition |
 |------|------------|
 | Dynamic HTML | HTML generated using data from the database instead of hardcoded values. |
+
+## Day 3 Summary
+
+| Term | Definition |
+|------|------------|
+| Model | Blueprint of a database table. |
+| Record | One row in a database table. |
+| Query | A request for data. |
+| QuerySet | A collection of Model objects returned by the ORM. |
+| ORM | Translates Python operations into SQL and SQL results into Python objects. |
+| Migration | Instructions for creating or modifying database tables. |
+| Django Admin | Built-in administration interface for managing data. |
+| Superuser | User with complete administrative permissions. |
+| Context | Dictionary that carries data from Views to Templates. |

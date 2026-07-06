@@ -332,3 +332,17 @@ Pet.objects.all()
 ```
 
 **Purpose:** Iterates through a QuerySet and displays each object's data.
+
+# Module 3.8 - Commands
+
+python manage.py makemigrations
+Purpose: Create migration files.
+
+python manage.py migrate
+Purpose: Apply migrations to the database.
+
+python manage.py createsuperuser
+Purpose: Create an administrator account.
+
+python manage.py runserver
+Purpose: Start the development server.
