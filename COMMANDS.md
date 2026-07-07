@@ -546,3 +546,273 @@ Use this only if the field is unique. Otherwise, `MultipleObjectsReturned` may b
 ✓ Raises `Model.DoesNotExist` if no record matches.
 
 ✓ Raises `MultipleObjectsReturned` if multiple records match.
+
+# ==========================================================
+# Module 4.3 - Ordering Data (order_by())
+# ==========================================================
+
+# Command Overview
+
+The order_by() method is used to sort records returned by the Django ORM.
+
+It does NOT modify the database.
+
+It only changes the order in which records are retrieved.
+
+Return Type:
+Ordered QuerySet
+
+==========================================================
+
+# 1. Sort Records in Ascending Order
+
+## Syntax
+
+```python
+Model.objects.order_by("field_name")
+```
+
+## Example
+
+```python
+Pet.objects.order_by("name")
+```
+
+## Syntax Breakdown
+
+Model
+↓
+
+Database Table
+
+objects
+↓
+
+Default ORM Manager
+
+order_by()
+↓
+
+Sorting Method
+
+"name"
+↓
+
+Field used for sorting
+
+## Purpose
+
+Sorts records in ascending order.
+
+## SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+ORDER BY name ASC;
+```
+
+## Returns
+
+Ordered QuerySet
+
+## Notes
+
+Ascending order is the default behavior.
+
+==========================================================
+
+# 2. Sort Records in Descending Order
+
+## Syntax
+
+```python
+Model.objects.order_by("-field_name")
+```
+
+## Example
+
+```python
+Pet.objects.order_by("-age")
+```
+
+## Syntax Breakdown
+
+-
+↓
+
+Descending Order Indicator
+
+age
+↓
+
+Sort Field
+
+## Purpose
+
+Sorts records in descending order.
+
+## SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+ORDER BY age DESC;
+```
+
+## Returns
+
+Ordered QuerySet
+
+## Notes
+
+The minus (-) sign tells Django to reverse the sorting order.
+
+==========================================================
+
+# 3. Sort Using Multiple Fields
+
+## Syntax
+
+```python
+Model.objects.order_by(
+    "field1",
+    "field2"
+)
+```
+
+## Example
+
+```python
+Pet.objects.order_by(
+    "species",
+    "name"
+)
+```
+
+## Purpose
+
+Sort by the first field.
+
+If multiple records have the same value,
+
+sort those records using the second field.
+
+## SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+ORDER BY species ASC,
+         name ASC;
+```
+
+## Returns
+
+Ordered QuerySet
+
+==========================================================
+
+# 4. Filter Then Sort
+
+## Syntax
+
+```python
+Model.objects.filter(
+    condition
+).order_by("field")
+```
+
+## Example
+
+```python
+Pet.objects.filter(
+    species="Dog"
+).order_by("age")
+```
+
+## Purpose
+
+Retrieve matching records first.
+
+Then sort those records.
+
+## SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+WHERE species='Dog'
+ORDER BY age ASC;
+```
+
+## Returns
+
+Filtered Ordered QuerySet
+
+==========================================================
+
+# Command Comparison
+
+| Command | Purpose | Returns |
+|----------|---------|----------|
+| all() | Retrieve every record | QuerySet |
+| filter() | Retrieve matching records | QuerySet |
+| get() | Retrieve one record | Model Object |
+| order_by() | Sort retrieved records | Ordered QuerySet |
+
+==========================================================
+
+# Best Practices
+
+✓ Perform sorting inside the database.
+
+✓ Combine filter() with order_by() whenever necessary.
+
+✓ Use meaningful fields for sorting.
+
+✓ Avoid manual sorting in Python.
+
+==========================================================
+
+# Common Mistakes
+
+❌ Sorting manually in Python.
+
+✔ Use order_by().
+
+----------------------------------------------------------
+
+❌ Forgetting "-" for descending order.
+
+Ascending
+
+```python
+Pet.objects.order_by("age")
+```
+
+Descending
+
+```python
+Pet.objects.order_by("-age")
+```
+
+----------------------------------------------------------
+
+❌ Assuming order_by() changes the database.
+
+✔ It only changes the retrieval order.
+
+==========================================================
+
+# Important Notes
+
+✓ order_by() never modifies database records.
+
+✓ Default sorting is ascending.
+
+✓ "-" indicates descending order.
+
+✓ Multiple fields can be used.
+
+✓ Returns an Ordered QuerySet.
