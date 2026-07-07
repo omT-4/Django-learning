@@ -471,3 +471,78 @@ Filtered QuerySet
 ✓ If no record matches, an empty QuerySet is returned.
 
 ✓ Let the database perform filtering instead of filtering in Python.
+
+# ==========================================================
+# Module 4.2 - Retrieving a Single Record (get())
+# ==========================================================
+
+## Retrieve a Single Record by ID
+
+### Syntax
+
+```python
+Model.objects.get(id=value)
+```
+
+### Example
+
+```python
+Pet.objects.get(id=1)
+```
+
+### Purpose
+
+Retrieves exactly one Model object using a unique field.
+
+### SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+WHERE id=1;
+```
+
+### Returns
+
+Single Model Object
+
+---
+
+## Retrieve by Another Field
+
+### Syntax
+
+```python
+Model.objects.get(field_name="value")
+```
+
+### Example
+
+```python
+Pet.objects.get(name="Bruno")
+```
+
+### Note
+
+Use this only if the field is unique. Otherwise, `MultipleObjectsReturned` may be raised.
+
+---
+
+# Quick Comparison
+
+| Command | Returns | Best Use |
+|---------|---------|----------|
+| `Model.objects.filter()` | QuerySet | Multiple matching records |
+| `Model.objects.get()` | Single Model object | Exactly one expected record |
+
+---
+
+# Notes
+
+✓ `get()` returns a single object.
+
+✓ `get()` does not return a QuerySet.
+
+✓ Raises `Model.DoesNotExist` if no record matches.
+
+✓ Raises `MultipleObjectsReturned` if multiple records match.

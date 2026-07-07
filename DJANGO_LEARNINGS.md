@@ -2469,3 +2469,200 @@ Filtering inside the database is faster, scalable and memory efficient than retr
 ✓ Avoid retrieving unnecessary records.
 
 ✓ Database filtering improves scalability and performance.
+
+# Module 4.2 - Retrieving a Single Record using get()
+
+---
+
+# Learning Objectives
+
+After completing this module you should be able to:
+
+- Understand the purpose of get().
+- Differentiate between get() and filter().
+- Know when get() should be used.
+- Understand the exceptions raised by get().
+- Retrieve a single Model object for detail pages.
+
+---
+
+# Core Concepts
+
+## What is get()?
+
+get() is an ORM method used to retrieve exactly one record from the database.
+
+Unlike filter(), it returns a single Model object instead of a QuerySet.
+
+---
+
+# Why was get() introduced?
+
+Many applications need exactly one object.
+
+Examples:
+
+- Client Details
+- Employee Profile
+- Product Page
+- Blog Post
+- User Profile
+
+Using get() clearly expresses the intent that only one record is expected.
+
+---
+
+# Syntax
+
+## Retrieve by ID
+
+```python
+Pet.objects.get(id=1)
+```
+
+## Retrieve by Name
+
+```python
+Pet.objects.get(name="Bruno")
+```
+
+(Only use this if the field is guaranteed to be unique.)
+
+---
+
+# Internal Workflow
+
+Browser
+→ Request
+→ View
+→ Pet.objects.get(id=1)
+→ ORM
+→ Generate SQL
+→ Database
+→ Single Row
+→ ORM
+→ Model Object
+→ Context
+→ render()
+→ Template
+→ Browser
+
+---
+
+# SQL Equivalent
+
+Python
+
+```python
+Pet.objects.get(id=1)
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+FROM Pet
+WHERE id=1;
+```
+
+---
+
+# get() vs filter()
+
+| get() | filter() |
+|--------|-----------|
+| Returns one Model object | Returns a QuerySet |
+| Expects exactly one record | Can return zero, one or many |
+| Raises exceptions if expectations are not met | Returns an empty QuerySet if nothing matches |
+| Best for detail pages | Best for lists and searches |
+
+---
+
+# Exceptions
+
+## DoesNotExist
+
+Raised when no matching record exists.
+
+Example:
+
+```python
+Pet.objects.get(id=100)
+```
+
+if ID 100 doesn't exist.
+
+---
+
+## MultipleObjectsReturned
+
+Raised when more than one record matches.
+
+Example:
+
+```python
+Pet.objects.get(species="Dog")
+```
+
+if multiple Dogs exist.
+
+---
+
+# Real-world Example
+
+CRM System
+
+Manager opens:
+
+/clients/25/
+
+Use:
+
+```python
+Client.objects.get(id=25)
+```
+
+This retrieves one Client object for the detail page.
+
+---
+
+# Common Mistakes
+
+❌ Using get() for non-unique fields.
+
+❌ Assuming get() returns a QuerySet.
+
+❌ Using a for loop after get().
+
+❌ Forgetting that get() raises exceptions.
+
+---
+
+# Summary
+
+get() retrieves exactly one Model object. It is ideal for detail pages and unique lookups. Unlike filter(), it raises exceptions when no record or multiple records are found.
+
+---
+
+# Interview Questions
+
+1. What is get()?
+2. What does get() return?
+3. Difference between get() and filter()?
+4. What is DoesNotExist?
+5. What is MultipleObjectsReturned?
+6. When should get() be used?
+
+---
+
+# Key Takeaways
+
+✓ get() returns one Model object.
+
+✓ filter() returns a QuerySet.
+
+✓ Use get() when exactly one record is expected.
+
+✓ get() may raise DoesNotExist or MultipleObjectsReturned.
+
+✓ Choosing get() improves readability and clearly expresses intent.

@@ -392,3 +392,57 @@ The database performs the filtering before returning results.
 ## Query Optimization
 
 The practice of retrieving only the required records from the database to improve performance, scalability, and user experience.
+
+## DoesNotExist
+
+An exception raised by `get()` when no matching record exists.
+
+Example:
+
+```python
+Pet.objects.get(id=100)
+```
+
+---
+
+## MultipleObjectsReturned
+
+An exception raised by `get()` when more than one record matches the query.
+
+Example:
+
+```python
+Pet.objects.get(species="Dog")
+```
+
+---
+
+## Model Object
+
+A Python object created by the ORM that represents one row from a database table.
+
+Example:
+
+```python
+pet = Pet.objects.get(id=1)
+```
+
+`pet` is a Model object.
+
+---
+
+## Unique Field
+
+A field whose value uniquely identifies one record in the database.
+
+Examples:
+
+- ID
+- Email (when marked unique)
+- Username (when marked unique)
+
+---
+
+## Detail Page
+
+A webpage that displays information about one specific object, such as a client's profile, product details, or a blog post.
