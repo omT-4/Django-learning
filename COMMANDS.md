@@ -346,3 +346,128 @@ Purpose: Create an administrator account.
 
 python manage.py runserver
 Purpose: Start the development server.
+
+# ==========================================================
+# Module 4.1 - Filtering Data (filter())
+# ==========================================================
+
+## 1. Retrieve All Records
+
+### Syntax
+
+```python
+Model.objects.all()
+```
+
+### Example
+
+```python
+Pet.objects.all()
+```
+
+### Purpose
+
+- Retrieves every record from the database table.
+- Returns a QuerySet.
+
+### SQL Equivalent
+
+```sql
+SELECT * FROM Pet;
+```
+
+### Returns
+
+QuerySet
+
+---
+
+## 2. Filter Records
+
+### Syntax
+
+```python
+Model.objects.filter(field_name="value")
+```
+
+### Example
+
+```python
+Pet.objects.filter(species="Dog")
+```
+
+### Purpose
+
+Retrieves only the records matching the specified condition.
+
+### SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+WHERE species='Dog';
+```
+
+### Returns
+
+Filtered QuerySet
+
+---
+
+## 3. Filter Using Multiple Conditions
+
+### Syntax
+
+```python
+Model.objects.filter(
+    field1="value1",
+    field2="value2"
+)
+```
+
+### Example
+
+```python
+Pet.objects.filter(
+    species="Dog",
+    age=2
+)
+```
+
+### Purpose
+
+Retrieves records satisfying all specified conditions (AND).
+
+### SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+WHERE species='Dog'
+AND age=2;
+```
+
+### Returns
+
+Filtered QuerySet
+
+---
+
+# Quick Comparison
+
+| Command | Purpose | Returns |
+|---------|---------|----------|
+| Model.objects.all() | Retrieve every record | QuerySet |
+| Model.objects.filter() | Retrieve matching records | Filtered QuerySet |
+
+---
+
+# Notes
+
+✓ filter() never modifies the database.
+
+✓ filter() always returns a QuerySet.
+
+✓ If no record matches, an empty QuerySet is returned.
+
+✓ Let the database perform filtering instead of filtering in Python.

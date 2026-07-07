@@ -271,3 +271,124 @@
 | Django Admin | Built-in administration interface for managing data. |
 | Superuser | User with complete administrative permissions. |
 | Context | Dictionary that carries data from Views to Templates. |
+
+# ==========================================================
+# Django Glossary
+# ==========================================================
+
+## Condition
+
+A rule used to determine which records should be returned from the database.
+
+Example:
+
+species="Dog"
+
+---
+
+## Database Filtering
+
+The process of allowing the database to search and return only matching records instead of retrieving all records and filtering them in Python.
+
+---
+
+## Filtered QuerySet
+
+A QuerySet containing only the Model objects that satisfy the given condition(s).
+
+Example:
+
+Pet.objects.filter(species="Dog")
+
+---
+
+## ORM (Object Relational Mapping)
+
+A translator between Python and SQL.
+
+It converts Python ORM queries into SQL and converts SQL results back into Python Model objects.
+
+---
+
+## Query
+
+A request made to the database to retrieve or manipulate data.
+
+Example:
+
+Retrieve all Dogs.
+
+---
+
+## QuerySet
+
+A collection of Model objects returned by the Django ORM.
+
+Examples:
+
+Pet.objects.all()
+
+Pet.objects.filter(species="Dog")
+
+---
+
+## WHERE Clause
+
+An SQL clause used to retrieve only records matching specified conditions.
+
+Example:
+
+```sql
+SELECT *
+FROM Pet
+WHERE species='Dog';
+```
+
+Django ORM automatically generates the WHERE clause when using filter().
+
+---
+
+# Software Engineering Principles
+
+## Database-First Filtering
+
+Always perform filtering inside the database whenever possible instead of retrieving all records and filtering them in Python.
+
+### Benefits
+
+- Better Performance
+- Lower Memory Usage
+- Lower CPU Usage
+- Lower Network Bandwidth
+- Better Scalability
+- Faster Response Time
+
+---
+
+## Fetch Only What You Need
+
+A backend engineering principle stating that an application should retrieve only the data required for the current operation.
+
+### Example
+
+❌ Bad
+
+```python
+Pet.objects.all()
+```
+
+then filtering in Python.
+
+✔ Good
+
+```python
+Pet.objects.filter(species="Dog")
+```
+
+The database performs the filtering before returning results.
+
+---
+
+## Query Optimization
+
+The practice of retrieving only the required records from the database to improve performance, scalability, and user experience.
