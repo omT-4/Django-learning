@@ -1006,3 +1006,37 @@ The ability of a database to efficiently handle increasing amounts of data.
 
 ## Maintainability
 The ease of updating and modifying a database without affecting other parts of the system.
+
+# ==========================================================
+# Django Glossary - Day 4 Summary
+# ==========================================================
+
+## ORM
+Object Relational Mapper. Converts Python ORM operations into SQL and SQL results into Python model objects.
+
+## QuerySet
+A collection of one or more model objects returned by the ORM.
+
+## Model Object
+A Python object representing a single database row.
+
+## ForeignKey
+Represents a One-to-Many relationship.
+
+## OneToOneField
+Represents a One-to-One relationship.
+
+## ManyToManyField
+Represents a Many-to-Many relationship.
+
+## Junction Table
+A table automatically created by Django to manage Many-to-Many relationships.
+
+## Database Normalization
+Organizing data to reduce redundancy and improve consistency.
+
+## Data Redundancy
+Unnecessary duplication of data.
+
+## Scalability
+The ability of a system to efficiently handle increasing amounts of data.
