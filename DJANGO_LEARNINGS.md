@@ -4198,3 +4198,131 @@ Choosing the correct relationship results in a cleaner, scalable and maintainabl
 ✓ Django automatically creates a junction table.
 
 ✓ Choose relationships according to business requirements.
+
+# ==========================================================
+# Module 4.7 - Database Design (CRMS Mini Project)
+# ==========================================================
+
+## Learning Objectives
+
+- Understand database design.
+- Identify entities and relationships.
+- Design normalized databases.
+- Apply ForeignKey, OneToOneField and ManyToManyField.
+- Think before coding.
+
+---
+
+## The Four Fundamental Questions
+
+### What is Database Design?
+
+Planning what tables to create, what data each table stores, and how tables relate to each other.
+
+### Why?
+
+To reduce redundancy, improve consistency, scalability and maintainability.
+
+### What problem does it solve?
+
+Poor database design causes duplicated data, difficult updates and poor scalability.
+
+### Workflow
+
+Requirements → Identify Entities → Identify Relationships → Database Design → Models → ORM → Database
+
+---
+
+## Entity Identification
+
+Real-world nouns usually become models.
+
+Example:
+
+- Lawyer
+- Client
+- Employee
+- Document
+- Specialization
+- EmployeeIDCard
+
+---
+
+## Relationship Selection
+
+| Models | Relationship | Django Field |
+|---------|--------------|--------------|
+| Lawyer → Client | One-to-Many | ForeignKey |
+| Employee → Client | One-to-Many | ForeignKey |
+| Client → Document | One-to-Many | ForeignKey |
+| Employee ↔ ID Card | One-to-One | OneToOneField |
+| Lawyer ↔ Specialization | Many-to-Many | ManyToManyField |
+
+---
+
+## CRM Database Structure
+
+Lawyer
+- Name
+- Phone
+- Email
+- Specializations
+
+Client
+- Name
+- Contact
+- Lawyer
+- Employee
+
+Employee
+- Name
+- Phone
+- ID Card
+
+Document
+- Title
+- Client
+
+EmployeeIDCard
+- Card Number
+
+Specialization
+- Name
+
+---
+
+## Why This Design?
+
+✓ No duplicate data
+
+✓ Easy updates
+
+✓ Better scalability
+
+✓ Better consistency
+
+✓ Lower storage usage
+
+---
+
+## Software Engineering Perspective
+
+A good database design stores information once and connects tables using relationships instead of duplication.
+
+---
+
+## Summary
+
+Database design starts before coding. Identify entities, define relationships, normalize data, then create Django models.
+
+---
+
+## Key Takeaways
+
+✓ Requirements come before models.
+
+✓ Nouns usually become models.
+
+✓ Relationships connect models.
+
+✓ Good design improves scalability and maintainability.

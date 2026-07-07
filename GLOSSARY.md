@@ -957,3 +957,52 @@ Relationships reduce redundancy.
 The process of organizing data to reduce duplication and improve consistency.
 
 Relationships are an important part of normalization.
+
+# ==========================================================
+# Django Glossary - Module 4.7
+# ==========================================================
+
+## Database Design
+Planning database tables, stored data and relationships before implementation.
+
+---
+
+## Entity
+A real-world object that becomes a Django model and a database table.
+
+Example: Lawyer, Client, Employee.
+
+---
+
+## Relationship
+A connection between two entities.
+
+Types:
+- One-to-One
+- One-to-Many
+- Many-to-Many
+
+---
+
+## Database Normalization
+Organizing data to reduce redundancy and improve consistency.
+
+---
+
+## Data Redundancy
+Storing the same information multiple times unnecessarily.
+
+---
+
+## Data Consistency
+Keeping the same information accurate across the database.
+
+---
+
+## Scalability
+The ability of a database to efficiently handle increasing amounts of data.
+
+---
+
+## Maintainability
+The ease of updating and modifying a database without affecting other parts of the system.

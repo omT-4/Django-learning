@@ -1096,3 +1096,53 @@ Creates a Many-to-Many relationship.
 ✓ ManyToManyField automatically creates a junction table.
 
 ✓ Relationships improve database normalization and reduce redundancy.
+
+# ==========================================================
+# Module 4.7 - Database Design
+# ==========================================================
+
+## Relationship Fields
+
+### ForeignKey
+
+```python
+models.ForeignKey(RelatedModel, on_delete=models.CASCADE)
+```
+
+Purpose: One-to-Many relationship.
+
+---
+
+### OneToOneField
+
+```python
+models.OneToOneField(RelatedModel, on_delete=models.CASCADE)
+```
+
+Purpose: One-to-One relationship.
+
+---
+
+### ManyToManyField
+
+```python
+models.ManyToManyField(RelatedModel)
+```
+
+Purpose: Many-to-Many relationship.
+
+---
+
+## Relationship Summary
+
+| Field | Relationship |
+|--------|--------------|
+| ForeignKey | One-to-Many |
+| OneToOneField | One-to-One |
+| ManyToManyField | Many-to-Many |
+
+---
+
+## Design Workflow
+
+Requirements → Entities → Relationships → Models → Database
