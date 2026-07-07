@@ -1146,3 +1146,78 @@ Purpose: Many-to-Many relationship.
 ## Design Workflow
 
 Requirements → Entities → Relationships → Models → Database
+
+# ==========================================================
+# Day 4 ORM Commands Summary
+# ==========================================================
+
+## Retrieve All
+
+```python
+Model.objects.all()
+```
+
+Returns: QuerySet
+
+---
+
+## Filter Records
+
+```python
+Model.objects.filter(field=value)
+```
+
+Returns: QuerySet
+
+---
+
+## Retrieve One Record
+
+```python
+Model.objects.get(field=value)
+```
+
+Returns: Model Object
+
+---
+
+## Exclude Records
+
+```python
+Model.objects.exclude(field=value)
+```
+
+Returns: QuerySet
+
+---
+
+## Sort Records
+
+```python
+Model.objects.order_by("field")
+Model.objects.order_by("-field")
+```
+
+Returns: Ordered QuerySet
+
+---
+
+## Relationship Fields
+
+```python
+models.ForeignKey(RelatedModel, on_delete=models.CASCADE)
+```
+
+One-to-Many
+
+```python
+models.OneToOneField(RelatedModel, on_delete=models.CASCADE)
+```
+
+One-to-One
+
+```python
+models.ManyToManyField(RelatedModel)
+```
+
+Many-to-Many

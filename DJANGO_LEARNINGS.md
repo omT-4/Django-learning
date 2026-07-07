@@ -4326,3 +4326,81 @@ Database design starts before coding. Identify entities, define relationships, n
 ✓ Relationships connect models.
 
 ✓ Good design improves scalability and maintainability.
+
+# ==========================================================
+# Module 4.8 - Day 4 Grand Challenge & Revision
+# ==========================================================
+
+## Learning Objectives
+
+- Revise ORM retrieval methods.
+- Compare relationship types.
+- Explain the complete request-to-response workflow.
+- Apply database design principles.
+- Think like a backend developer.
+
+---
+
+## ORM Retrieval Methods
+
+| Method | Returns | Purpose |
+|---------|----------|---------|
+| all() | QuerySet | Retrieve all records |
+| filter() | QuerySet | Retrieve matching records |
+| get() | Model Object | Retrieve one record |
+| exclude() | QuerySet | Exclude matching records |
+| order_by() | Ordered QuerySet | Sort records |
+
+---
+
+## Relationship Types
+
+| Django Field | Relationship | Example |
+|--------------|--------------|---------|
+| OneToOneField | One-to-One | Employee ↔ ID Card |
+| ForeignKey | One-to-Many | Lawyer → Clients |
+| ManyToManyField | Many-to-Many | Student ↔ Courses |
+
+---
+
+## Complete Workflow
+
+Browser → Request → project/urls.py → include() → app/urls.py → View → ORM Query → ORM → SQL → Database → Database Rows → ORM → Model Object/QuerySet → Context → render() → Template → HttpResponse → Browser
+
+---
+
+## Database Design Process
+
+Requirements → Identify Entities → Identify Relationships → Database Design → Models → ORM → Database
+
+---
+
+## Software Engineering Principles
+
+✓ Normalize data.
+
+✓ Avoid redundancy.
+
+✓ Store relationships instead of duplicate information.
+
+✓ Let the database handle filtering and sorting.
+
+✓ Choose relationship types based on business rules.
+
+---
+
+## Summary
+
+Day 4 focused on efficient data retrieval, relationship design, normalization, and scalable backend architecture.
+
+---
+
+## Key Takeaways
+
+✓ ORM translates Python operations into SQL.
+
+✓ QuerySet contains Model Objects.
+
+✓ Use the correct relationship field for each business scenario.
+
+✓ Good database design improves maintainability and scalability.
