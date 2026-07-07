@@ -816,3 +816,178 @@ Pet.objects.order_by("-age")
 ✓ Multiple fields can be used.
 
 ✓ Returns an Ordered QuerySet.
+
+# ==========================================================
+# Module 4.4 - Excluding Records (exclude())
+# ==========================================================
+
+# Command Overview
+
+exclude() retrieves every record except those matching one or more conditions.
+
+Return Type
+
+QuerySet
+
+==========================================================
+
+# 1. Exclude Records
+
+## Syntax
+
+```python
+Model.objects.exclude(field_name="value")
+```
+
+## Example
+
+```python
+Pet.objects.exclude(species="Dog")
+```
+
+## Syntax Breakdown
+
+Model
+↓
+
+Database Table
+
+objects
+↓
+
+Default ORM Manager
+
+exclude()
+↓
+
+Exclude matching records
+
+field_name
+↓
+
+Field used for comparison
+
+"value"
+↓
+
+Condition Value
+
+## Purpose
+
+Retrieve every record except those matching the specified condition.
+
+## SQL Equivalent
+
+```sql
+SELECT *
+FROM Pet
+WHERE NOT species='Dog';
+```
+
+## Returns
+
+QuerySet
+
+==========================================================
+
+# 2. Exclude Multiple Conditions
+
+## Syntax
+
+```python
+Model.objects.exclude(
+    field1="value1",
+    field2="value2"
+)
+```
+
+## Example
+
+```python
+Pet.objects.exclude(
+    species="Dog",
+    age=2
+)
+```
+
+## Purpose
+
+Exclude records matching all specified conditions.
+
+==========================================================
+
+# 3. Filter Then Exclude
+
+## Syntax
+
+```python
+Model.objects.filter(...).exclude(...)
+```
+
+## Example
+
+```python
+Pet.objects.filter(
+    species="Dog"
+).exclude(age=1)
+```
+
+## Purpose
+
+Retrieve matching records first, then remove unwanted records.
+
+==========================================================
+
+# 4. Exclude Then Order
+
+## Syntax
+
+```python
+Model.objects.exclude(...).order_by("field")
+```
+
+## Example
+
+```python
+Client.objects.exclude(
+    status="Completed"
+).order_by("deadline")
+```
+
+## Purpose
+
+Exclude records first, then sort the remaining records.
+
+==========================================================
+
+# Command Comparison
+
+| Command | Purpose | Returns |
+|---------|---------|----------|
+| all() | Retrieve all records | QuerySet |
+| filter() | Retrieve matching records | QuerySet |
+| get() | Retrieve one record | Model Object |
+| order_by() | Sort records | Ordered QuerySet |
+| exclude() | Retrieve records except matching ones | QuerySet |
+
+==========================================================
+
+# Best Practices
+
+✓ Use exclude() instead of removing records in Python.
+
+✓ Chain filter(), exclude() and order_by() when needed.
+
+✓ Keep queries readable.
+
+==========================================================
+
+# Important Notes
+
+✓ exclude() never deletes records.
+
+✓ exclude() never modifies the database.
+
+✓ SQL equivalent uses WHERE NOT.
+
+✓ Always returns a QuerySet.
