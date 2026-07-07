@@ -3932,3 +3932,269 @@ Database-side exclusion improves performance, scalability and maintainability.
 ✓ Database-side exclusion is faster than Python-side exclusion.
 
 ✓ Combine filter(), exclude() and order_by() for powerful ORM queries.
+
+# ==========================================================
+# Module 4.6 - OneToOneField & ManyToManyField
+# ==========================================================
+
+## Learning Objectives
+
+- Understand One-to-One relationships.
+- Understand Many-to-Many relationships.
+- Differentiate between OneToOneField, ForeignKey and ManyToManyField.
+- Understand how Django stores Many-to-Many relationships.
+- Choose the correct relationship for real-world applications.
+
+---
+
+## The Four Fundamental Questions
+
+### What are OneToOneField and ManyToManyField?
+
+They are Django model fields used to represent One-to-One and Many-to-Many relationships between models.
+
+### Why were they introduced?
+
+Not every relationship is One-to-Many. Different real-world situations require different relationship types.
+
+### What problem do they solve?
+
+They prevent data duplication and accurately model relationships between database tables.
+
+### Where do they fit?
+
+Browser → Request → View → Model Relationship → ORM → Database → ORM → Model Objects → Context → render() → Template → Browser
+
+---
+
+## Relationship Types
+
+### One-to-One (1:1)
+
+One record is connected to exactly one record.
+
+Examples:
+- User ↔ Profile
+- Person ↔ Passport
+- Employee ↔ ID Card
+
+Django Field:
+
+```python
+models.OneToOneField()
+```
+
+---
+
+### One-to-Many (1:M)
+
+One record is connected to many records.
+
+Examples:
+- Lawyer → Clients
+- Teacher → Students
+- Author → Books
+
+Django Field:
+
+```python
+models.ForeignKey()
+```
+
+---
+
+### Many-to-Many (M:M)
+
+Many records connect to many records.
+
+Examples:
+- Student ↔ Courses
+- Doctor ↔ Hospitals
+- Actor ↔ Movies
+
+Django Field:
+
+```python
+models.ManyToManyField()
+```
+
+---
+
+## Syntax
+
+### OneToOneField
+
+```python
+user = models.OneToOneField(
+    User,
+    on_delete=models.CASCADE
+)
+```
+
+Meaning:
+Each Profile belongs to one User.
+
+---
+
+### ManyToManyField
+
+```python
+courses = models.ManyToManyField(Course)
+```
+
+Meaning:
+A Student can join many Courses.
+A Course can have many Students.
+
+---
+
+## Syntax Breakdown
+
+### OneToOneField
+
+- user → Field name
+- OneToOneField → One-to-One relationship
+- User → Related model
+- on_delete → Action when related record is deleted
+- CASCADE → Delete related record
+
+### ManyToManyField
+
+- courses → Field name
+- ManyToManyField → Many-to-Many relationship
+- Course → Related model
+
+---
+
+## Internal Workflow
+
+Browser → Request → View → ORM → Database → Related Tables → ORM → Model Objects → Context → render() → Template → Browser
+
+---
+
+## How ManyToMany Works
+
+Django automatically creates a hidden junction table.
+
+Example:
+
+Student Table
+
+| ID | Name |
+|----|------|
+|1|Om|
+|2|Rahul|
+
+Course Table
+
+| ID | Name |
+|----|------|
+|1|Python|
+|2|Django|
+
+Hidden Junction Table
+
+| Student_ID | Course_ID |
+|------------|-----------|
+|1|1|
+|1|2|
+|2|2|
+
+This table stores relationships between both models.
+
+---
+
+## Comparison
+
+| Relationship | Django Field | Example |
+|--------------|--------------|---------|
+| One-to-One | OneToOneField | User ↔ Profile |
+| One-to-Many | ForeignKey | Lawyer → Clients |
+| Many-to-Many | ManyToManyField | Student ↔ Courses |
+
+---
+
+## Real-world CRM Example
+
+Employee ↔ ID Card → OneToOneField
+
+Lawyer → Clients → ForeignKey
+
+Lawyer ↔ Specializations → ManyToManyField
+
+---
+
+## Common Mistakes
+
+❌ Using ForeignKey for User ↔ Profile.
+
+✔ Use OneToOneField.
+
+---
+
+❌ Using ForeignKey for Student ↔ Courses.
+
+✔ Use ManyToManyField.
+
+---
+
+❌ Creating the junction table manually.
+
+✔ Django creates it automatically.
+
+---
+
+## Best Practices
+
+- Choose relationships based on business requirements.
+- Avoid duplicate data.
+- Let Django manage junction tables.
+- Think about relationship cardinality before designing models.
+
+---
+
+## Software Engineering Perspective
+
+Proper relationship design improves:
+
+- Data Consistency
+- Storage Efficiency
+- Maintainability
+- Scalability
+- Database Normalization
+
+---
+
+## Summary
+
+Django provides three relationship fields:
+
+- OneToOneField → One-to-One
+- ForeignKey → One-to-Many
+- ManyToManyField → Many-to-Many
+
+Choosing the correct relationship results in a cleaner, scalable and maintainable database design.
+
+---
+
+## Interview Questions
+
+1. Difference between OneToOneField, ForeignKey and ManyToManyField.
+2. Why does Django create a junction table?
+3. Explain One-to-One with an example.
+4. Explain Many-to-Many with an example.
+5. When would you use ManyToManyField instead of ForeignKey?
+
+---
+
+## Key Takeaways
+
+✓ OneToOneField represents One-to-One.
+
+✓ ForeignKey represents One-to-Many.
+
+✓ ManyToManyField represents Many-to-Many.
+
+✓ Django automatically creates a junction table.
+
+✓ Choose relationships according to business requirements.

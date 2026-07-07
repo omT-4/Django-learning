@@ -866,3 +866,94 @@ Benefits
 ✓ Better Maintainability
 
 ✓ Better Scalability
+
+# ==========================================================
+# Django Glossary - Module 4.6
+# ==========================================================
+
+## One-to-One Relationship
+
+One record is connected to exactly one record.
+
+Example:
+User ↔ Profile
+
+Related Field:
+OneToOneField
+
+---
+
+## One-to-Many Relationship
+
+One record connects to many records.
+
+Example:
+Lawyer → Clients
+
+Related Field:
+ForeignKey
+
+---
+
+## Many-to-Many Relationship
+
+Many records connect to many records.
+
+Example:
+Student ↔ Courses
+
+Related Field:
+ManyToManyField
+
+---
+
+## OneToOneField
+
+Django model field representing a One-to-One relationship.
+
+---
+
+## ForeignKey
+
+Django model field representing a One-to-Many relationship.
+
+---
+
+## ManyToManyField
+
+Django model field representing a Many-to-Many relationship.
+
+---
+
+## Junction Table
+
+A hidden table automatically created by Django to store Many-to-Many relationships.
+
+Contains the primary keys of both related models.
+
+---
+
+## Cardinality
+
+The number of relationships between records in different tables.
+
+Types:
+- One-to-One
+- One-to-Many
+- Many-to-Many
+
+---
+
+## Data Redundancy
+
+Storing the same information multiple times.
+
+Relationships reduce redundancy.
+
+---
+
+## Database Normalization
+
+The process of organizing data to reduce duplication and improve consistency.
+
+Relationships are an important part of normalization.

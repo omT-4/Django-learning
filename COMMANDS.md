@@ -991,3 +991,108 @@ Exclude records first, then sort the remaining records.
 ✓ SQL equivalent uses WHERE NOT.
 
 ✓ Always returns a QuerySet.
+
+# ==========================================================
+# Module 4.6 - Relationship Fields
+# ==========================================================
+
+## OneToOneField
+
+### Syntax
+
+```python
+field_name = models.OneToOneField(
+    RelatedModel,
+    on_delete=models.CASCADE
+)
+```
+
+### Example
+
+```python
+user = models.OneToOneField(
+    User,
+    on_delete=models.CASCADE
+)
+```
+
+### Purpose
+
+Creates a One-to-One relationship.
+
+### Syntax Breakdown
+
+- field_name → Relationship field
+- OneToOneField → One-to-One relation
+- RelatedModel → Connected model
+- on_delete → Deletion behavior
+- CASCADE → Delete related record
+
+### Returns
+
+Relationship Field
+
+---
+
+## ForeignKey
+
+### Syntax
+
+```python
+field_name = models.ForeignKey(
+    RelatedModel,
+    on_delete=models.CASCADE
+)
+```
+
+### Purpose
+
+Creates a One-to-Many relationship.
+
+---
+
+## ManyToManyField
+
+### Syntax
+
+```python
+field_name = models.ManyToManyField(RelatedModel)
+```
+
+### Example
+
+```python
+courses = models.ManyToManyField(Course)
+```
+
+### Purpose
+
+Creates a Many-to-Many relationship.
+
+### Syntax Breakdown
+
+- field_name → Relationship field
+- ManyToManyField → Many-to-Many relation
+- RelatedModel → Connected model
+
+---
+
+## Command Comparison
+
+| Field | Relationship |
+|--------|--------------|
+| OneToOneField | One-to-One |
+| ForeignKey | One-to-Many |
+| ManyToManyField | Many-to-Many |
+
+---
+
+## Notes
+
+✓ OneToOneField requires on_delete.
+
+✓ ForeignKey requires on_delete.
+
+✓ ManyToManyField automatically creates a junction table.
+
+✓ Relationships improve database normalization and reduce redundancy.
