@@ -1276,3 +1276,45 @@ Retrieve ordered records.
 | Read | Retrieve records |
 | Update | Modify records |
 | Delete | Remove records |
+
+# ==========================================================
+# Module 5.2 - Creating Records
+# ==========================================================
+
+## create()
+
+```python
+Model.objects.create(
+    field=value
+)
+```
+
+Purpose:
+Create and immediately save a record.
+
+Returns:
+Model Object.
+
+---
+
+## save()
+
+```python
+object = Model(field=value)
+object.save()
+```
+
+Purpose:
+Save an existing model object to the database.
+
+Returns:
+None.
+
+---
+
+## Comparison
+
+| Method | Saves Immediately |
+|---------|-------------------|
+| create() | Yes |
+| save() | Only after calling save() |

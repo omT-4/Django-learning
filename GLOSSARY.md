@@ -1084,3 +1084,41 @@ An application that allows users to create, view, modify and remove data instead
 ## Persistent Storage
 
 Data stored permanently in the database until modified or deleted.
+
+# ==========================================================
+# Django Glossary - Module 5.2
+# ==========================================================
+
+## create()
+
+An ORM method that creates and immediately saves a model object to the database.
+
+---
+
+## save()
+
+A model method that writes a model object to the database.
+
+---
+
+## SQL INSERT
+
+The SQL command used to insert a new row into a database table.
+
+---
+
+## Model Object
+
+A Python object representing one database record.
+
+---
+
+## Flexibility
+
+The ability to modify or validate a model object before storing it in the database.
+
+---
+
+## Record Creation Workflow
+
+View → ORM → SQL INSERT → Database → ORM → Model Object → Response.

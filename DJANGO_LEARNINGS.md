@@ -4538,3 +4538,128 @@ CRUD forms the foundation of every database-driven application.
 ✓ CRUD makes applications interactive.
 
 ✓ ORM performs CRUD operations on the database.
+
+# ==========================================================
+# Module 5.2 - Creating Records (create() & save())
+# ==========================================================
+
+## Learning Objectives
+
+- Create database records using Django ORM.
+- Understand create() and save().
+- Differentiate between both methods.
+- Understand record creation workflow.
+
+---
+
+## The Four Fundamental Questions
+
+### What are create() and save()?
+
+Both are ORM techniques used to insert records into the database.
+
+### Why?
+
+Different applications require different levels of flexibility.
+
+### What problem do they solve?
+
+They eliminate the need to write raw SQL INSERT statements.
+
+### Workflow
+
+Browser → HTTP Request → URL → View → create()/save() → ORM → SQL INSERT → Database → ORM → Model Object → Context → render() → Template → Browser
+
+---
+
+## create()
+
+Creates a model object and immediately saves it.
+
+Syntax:
+
+```python
+Model.objects.create(field=value)
+```
+
+Example:
+
+```python
+Client.objects.create(
+    name="Rahul",
+    phone="9876543210"
+)
+```
+
+Use when all required data is already available.
+
+---
+
+## save()
+
+Creates a model object first.
+
+Nothing is stored until save() is called.
+
+Syntax:
+
+```python
+client = Client(
+    name="Rahul",
+    phone="9876543210"
+)
+
+client.save()
+```
+
+Use when data needs validation or modification before saving.
+
+---
+
+## Comparison
+
+| create() | save() |
+|-----------|---------|
+| One-step operation | Two-step operation |
+| Saves immediately | Saves only after save() |
+| Less flexible | More flexible |
+| Best for simple inserts | Best for multi-step workflows |
+
+---
+
+## SQL Equivalent
+
+```sql
+INSERT INTO Client(...)
+VALUES(...);
+```
+
+The ORM generates this automatically.
+
+---
+
+## Common Mistakes
+
+❌ Assuming `Client(...)` inserts into the database.
+
+✔ Only `save()` writes to the database.
+
+---
+
+## Software Engineering Perspective
+
+Use create() for simple workflows.
+
+Use save() when review, validation or editing is required before insertion.
+
+---
+
+## Key Takeaways
+
+✓ create() inserts immediately.
+
+✓ save() provides flexibility.
+
+✓ Creating an object is not the same as saving it.
+
+✓ ORM converts Python into SQL INSERT statements.
