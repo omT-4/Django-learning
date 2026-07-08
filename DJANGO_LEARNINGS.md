@@ -4404,3 +4404,137 @@ Day 4 focused on efficient data retrieval, relationship design, normalization, a
 ✓ Use the correct relationship field for each business scenario.
 
 ✓ Good database design improves maintainability and scalability.
+
+# ==========================================================
+# Module 5.1 - Introduction to CRUD
+# ==========================================================
+
+## Learning Objectives
+
+- Understand CRUD.
+- Explain Create, Read, Update and Delete.
+- Identify CRUD operations in real applications.
+- Understand where CRUD fits in Django.
+
+---
+
+## CRUD
+
+CRUD represents the four basic database operations.
+
+| Letter | Meaning |
+|---------|---------|
+| C | Create |
+| R | Read |
+| U | Update |
+| D | Delete |
+
+Almost every database application performs these operations.
+
+---
+
+## The Four Fundamental Questions
+
+### What is CRUD?
+
+CRUD is the complete lifecycle of managing database records.
+
+### Why?
+
+Applications need to create, retrieve, modify and remove data.
+
+### What problem does it solve?
+
+CRUD makes applications interactive instead of read-only.
+
+### Workflow
+
+Browser → HTTP Request → URL → View → ORM → Database → ORM → Context → render() → Template → Browser
+
+---
+
+## CRUD Operations
+
+### Create
+
+Adds a new record.
+
+Examples:
+
+- Register User
+- Add Client
+- Create Product
+
+---
+
+### Read
+
+Retrieves data.
+
+Methods:
+
+- all()
+- filter()
+- get()
+- exclude()
+- order_by()
+
+---
+
+### Update
+
+Modifies existing records.
+
+Example:
+
+Change employee salary.
+
+---
+
+### Delete
+
+Permanently removes records.
+
+Example:
+
+Delete duplicate client.
+
+---
+
+## CRUD in CRMS
+
+| Operation | Example |
+|-----------|---------|
+| Create | Register Client |
+| Read | View Client Details |
+| Update | Correct Client Information |
+| Delete | Remove Duplicate Client |
+
+---
+
+## Software Engineering Perspective
+
+CRUD distributes responsibilities:
+
+- Browser → User interaction
+- View → Business logic
+- ORM → Database communication
+- Database → Persistent storage
+
+---
+
+## Summary
+
+CRUD forms the foundation of every database-driven application.
+
+---
+
+## Key Takeaways
+
+✓ CRUD = Create, Read, Update, Delete.
+
+✓ Read operations were covered in Days 3–4.
+
+✓ CRUD makes applications interactive.
+
+✓ ORM performs CRUD operations on the database.

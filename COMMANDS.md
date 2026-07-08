@@ -1221,3 +1221,58 @@ models.ManyToManyField(RelatedModel)
 ```
 
 Many-to-Many
+
+# ==========================================================
+# Module 5.1 - CRUD Overview
+# ==========================================================
+
+## Read Operations
+
+```python
+Model.objects.all()
+```
+
+Retrieve all records.
+
+---
+
+```python
+Model.objects.filter(...)
+```
+
+Retrieve matching records.
+
+---
+
+```python
+Model.objects.get(...)
+```
+
+Retrieve one record.
+
+---
+
+```python
+Model.objects.exclude(...)
+```
+
+Retrieve records except matching ones.
+
+---
+
+```python
+Model.objects.order_by(...)
+```
+
+Retrieve ordered records.
+
+---
+
+## CRUD Summary
+
+| CRUD | Purpose |
+|------|---------|
+| Create | Add new records |
+| Read | Retrieve records |
+| Update | Modify records |
+| Delete | Remove records |

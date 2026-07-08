@@ -1040,3 +1040,47 @@ Unnecessary duplication of data.
 
 ## Scalability
 The ability of a system to efficiently handle increasing amounts of data.
+
+# ==========================================================
+# Django Glossary - Module 5.1
+# ==========================================================
+
+## CRUD
+
+The four fundamental database operations: Create, Read, Update and Delete.
+
+---
+
+## Create
+
+Adds a new record to the database.
+
+---
+
+## Read
+
+Retrieves data from the database.
+
+---
+
+## Update
+
+Modifies an existing database record.
+
+---
+
+## Delete
+
+Permanently removes a database record.
+
+---
+
+## Interactive Application
+
+An application that allows users to create, view, modify and remove data instead of only displaying it.
+
+---
+
+## Persistent Storage
+
+Data stored permanently in the database until modified or deleted.
