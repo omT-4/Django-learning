@@ -1318,3 +1318,56 @@ None.
 |---------|-------------------|
 | create() | Yes |
 | save() | Only after calling save() |
+
+# ==========================================================
+# Module 5.3 - Updating Records
+# ==========================================================
+
+## Retrieve Record
+
+```python
+Model.objects.get(id=value)
+```
+
+Returns:
+Model Object
+
+Purpose:
+Retrieve one record.
+
+---
+
+## Modify Field
+
+```python
+object.field = value
+```
+
+Purpose:
+Modify the Python object.
+
+---
+
+## Save Changes
+
+```python
+object.save()
+```
+
+Purpose:
+Update the existing database record.
+
+---
+
+## Update Workflow
+
+get() → Modify Fields → save()
+
+---
+
+## SQL Mapping
+
+| ORM | SQL |
+|-----|-----|
+| get() | SELECT |
+| save() (existing object) | UPDATE |

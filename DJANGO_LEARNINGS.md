@@ -4663,3 +4663,120 @@ Use save() when review, validation or editing is required before insertion.
 ✓ Creating an object is not the same as saving it.
 
 ✓ ORM converts Python into SQL INSERT statements.
+
+# ==========================================================
+# Module 5.3 - Updating Records (save())
+# ==========================================================
+
+## Learning Objectives
+
+- Update existing database records.
+- Retrieve records using get().
+- Modify fields.
+- Save updated records.
+- Understand INSERT vs UPDATE behavior.
+
+---
+
+## The Four Fundamental Questions
+
+### What is Updating?
+
+Updating modifies an existing database record without creating a new one.
+
+### Why?
+
+To keep data accurate while avoiding duplicate records.
+
+### What problem does it solve?
+
+Maintains data consistency, relationships and database integrity.
+
+### Workflow
+
+Browser → HTTP Request → URL → View → get() → ORM → SQL SELECT → Database → Model Object → Modify Field → save() → ORM → SQL UPDATE → Database → Context → render() → Template → Browser
+
+---
+
+## Updating Records
+
+Step 1
+
+Retrieve object.
+
+```python
+client = Client.objects.get(id=1)
+```
+
+---
+
+Step 2
+
+Modify field.
+
+```python
+client.phone = "9999999999"
+```
+
+---
+
+Step 3
+
+Save.
+
+```python
+client.save()
+```
+
+---
+
+## SQL Equivalent
+
+```sql
+UPDATE Client
+SET phone='9999999999'
+WHERE id=1;
+```
+
+---
+
+## Create vs Update
+
+| Create | Update |
+|---------|---------|
+| INSERT | UPDATE |
+| New record | Existing record |
+| create() / save() | get() + save() |
+
+---
+
+## Common Mistakes
+
+❌ Creating duplicate records instead of updating.
+
+❌ Forgetting save().
+
+❌ Updating the wrong object.
+
+---
+
+## Software Engineering Perspective
+
+Updating preserves:
+
+- Data consistency
+- Relationships
+- Scalability
+- Maintainability
+
+---
+
+## Key Takeaways
+
+✓ Retrieve first.
+
+✓ Modify fields.
+
+✓ save() writes changes.
+
+✓ save() performs UPDATE for existing objects.

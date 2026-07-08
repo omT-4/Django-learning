@@ -1122,3 +1122,41 @@ The ability to modify or validate a model object before storing it in the databa
 ## Record Creation Workflow
 
 View → ORM → SQL INSERT → Database → ORM → Model Object → Response.
+
+# ==========================================================
+# Django Glossary - Module 5.3
+# ==========================================================
+
+## Update
+
+The process of modifying an existing database record.
+
+---
+
+## SQL UPDATE
+
+The SQL statement used to modify existing rows in a database table.
+
+---
+
+## Existing Object
+
+A model object retrieved from the database.
+
+---
+
+## Data Consistency
+
+Keeping stored information accurate and synchronized across the database.
+
+---
+
+## Duplicate Record
+
+An unnecessary second copy of the same logical entity.
+
+---
+
+## Record Lifecycle
+
+Create → Read → Update → Delete (CRUD)
