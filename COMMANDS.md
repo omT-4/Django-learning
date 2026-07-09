@@ -1423,3 +1423,12 @@ Client.objects.filter(status="Inactive").delete()
 | Read | all() / filter() / get() | SELECT |
 | Update | get() + modify + save() | UPDATE |
 | Delete | get() + delete() | DELETE |
+
+# ==========================================================
+# Module 5.5 - Django Forms Introduction
+# ==========================================================
+
+## Import Forms
+
+```python
+from django import forms

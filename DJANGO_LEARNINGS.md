@@ -4919,3 +4919,80 @@ Before deleting data, consider:
 ✓ Use Update for corrections.
 
 ✓ Consider soft deletion when historical data must be preserved.
+
+# ==========================================================
+# Module 5.5 - Introduction to Django Forms & ModelForm
+# ==========================================================
+
+## Purpose of Forms
+Forms provide users with an interface to enter and submit data without accessing Python code.
+
+## Core Workflow
+User → Form → HTTP Request → View → Validation → Model Instance → ORM → Database
+
+## Django Form Types
+
+| Type | Purpose |
+|---|---|
+| forms.Form | General-purpose form with manually defined fields |
+| forms.ModelForm | Form connected to a model |
+
+## ModelForm
+A ModelForm can:
+- Generate form fields from model fields.
+- Receive submitted data.
+- Validate data.
+- Display errors.
+- Create or update model instances.
+
+## forms.py
+Usually created manually inside the Django app:
+
+app/
+├── forms.py
+├── models.py
+├── views.py
+└── urls.py
+
+## GET Request
+Used to request a resource/page.
+
+Form example:
+GET → View → Empty Form → Template → Browser
+
+## POST Request
+Used to submit data to the server.
+
+Form example:
+POST → View → Bound ModelForm → Validation
+
+If valid:
+Valid Form → save() → ORM → SQL INSERT/UPDATE → Database
+
+If invalid:
+Invalid Form → Errors → Template → Browser
+
+## Component Responsibilities
+Model → Defines database structure.
+ModelForm → Handles user input and validation for model data.
+View → Controls application workflow.
+Template → Presents the interface.
+ORM → Translates Python/model operations into database queries.
+Database → Stores data persistently.
+
+## Form vs ModelForm
+
+| Form | ModelForm |
+|---|---|
+| General-purpose | Connected to model |
+| Fields usually defined manually | Can derive fields from model |
+| Supports validation | Supports validation |
+| Not automatically tied to model saving | Can create/update model instances |
+
+## Key Takeaways
+✓ Forms allow users to submit data.
+✓ ModelForm connects form logic to a model.
+✓ GET usually retrieves the form.
+✓ POST submits form data.
+✓ Validation happens before invalid data is saved.
+✓ The view controls the workflow.

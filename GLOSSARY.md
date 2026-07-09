@@ -1191,3 +1191,41 @@ The ability to undo or recover from an action.
 
 ## Business Rule
 A requirement defining how software should behave according to real organizational needs.
+
+
+# 📚 `GLOSSARY.md`
+
+```markdown
+# ==========================================================
+# Django Glossary - Module 5.5
+# ==========================================================
+
+## Form
+An interface used to collect and submit user input.
+
+## ModelForm
+A Django form connected to a model that can generate fields, validate input and create or update model instances.
+
+## forms.py
+A file commonly created inside a Django app to define forms.
+
+## GET
+An HTTP request method generally used to retrieve resources.
+
+## POST
+An HTTP request method generally used to submit data to a server.
+
+## Validation
+The process of checking whether submitted data follows required rules.
+
+## Bound Form
+A Django form containing submitted data.
+
+## Unbound Form
+A form without submitted data, usually an empty form displayed initially.
+
+## Form Error
+A validation message generated when submitted data is invalid.
+
+## Separation of Concerns
+A design principle where different components handle different responsibilities.
