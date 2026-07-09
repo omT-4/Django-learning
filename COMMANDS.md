@@ -1432,3 +1432,196 @@ Client.objects.filter(status="Inactive").delete()
 
 ```python
 from django import forms
+
+Import Model
+from .models import Client
+Basic ModelForm Structure
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ["name", "email", "phone"]
+Form Workflow
+
+GET:
+Browser → View → Empty Form → Template → Browser
+
+POST:
+Browser → View → Bound Form → Validation → Save/Error
+
+# ==========================================================
+# Module 5.6 - ModelForm Commands
+# ==========================================================
+
+## Import Django Forms
+
+```python
+from django import forms
+```
+
+## Import Model from Current App
+
+```python
+from .models import Client
+```
+
+`.` = Current Django app.
+
+## Create ModelForm
+
+```python
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ["name", "email", "phone"]
+```
+
+## Include All Editable Fields
+
+```python
+fields = "__all__"
+```
+
+Use carefully because internal fields may be exposed.
+
+## Create Empty Unbound Form
+
+```python
+form = ClientForm()
+```
+
+## Create Bound Form with Submitted Data
+
+```python
+form = ClientForm(request.POST)
+```
+
+## Check Request Method
+
+```python
+if request.method == "POST":
+```
+
+## Validate Form
+
+```python
+form.is_valid()
+```
+
+Returns `True` or `False`.
+
+## Save Valid Form
+
+```python
+form.save()
+```
+
+Creates or updates and saves a model instance.
+
+## Correct Validation Pattern
+
+```python
+if form.is_valid():
+    form.save()
+```
+
+## Render Form
+
+```python
+return render(
+    request,
+    "blog/add_client.html",
+    {"form": form}
+)
+```
+
+## Redirect After Successful Submission
+
+```python
+return redirect("add_client")
+```
+
+## Import render and redirect
+
+```python
+from django.shortcuts import render, redirect
+```
+
+## Complete Create View
+
+```python
+from django.shortcuts import render, redirect
+from .forms import ClientForm
+
+def add_client(request):
+    if request.method == "POST":
+        form = ClientForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("add_client")
+    else:
+        form = ClientForm()
+
+    return render(
+        request,
+        "blog/add_client.html",
+        {"form": form}
+    )
+```
+
+## Connect URL
+
+```python
+from django.urls import path
+from .views import add_client
+
+urlpatterns = [
+    path("add-client/", add_client, name="add_client"),
+]
+```
+
+## HTML POST Form
+
+```html
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Client</button>
+</form>
+```
+
+## Add CSRF Protection
+
+```django
+{% csrf_token %}
+```
+
+## Display Form as Paragraphs
+
+```django
+{{ form.as_p }}
+```
+
+## GET Pattern
+
+```text
+GET → ClientForm() → Unbound Form → Context → Template
+```
+
+## POST Valid Pattern
+
+```text
+POST → ClientForm(request.POST) → is_valid() → save() → ORM → Database → Redirect
+```
+
+## POST Invalid Pattern
+
+```text
+POST → ClientForm(request.POST) → is_valid() returns False → Form Errors → Template
+```
+
+## POST-Redirect-GET Pattern
+
+```text
+POST → Save → Redirect → GET
+```

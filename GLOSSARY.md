@@ -1229,3 +1229,121 @@ A validation message generated when submitted data is invalid.
 
 ## Separation of Concerns
 A design principle where different components handle different responsibilities.
+
+# ==========================================================
+# Django Glossary - Module 5.6
+# ==========================================================
+
+## forms.py
+A file commonly created inside a Django app to define form classes.
+
+## Django Form
+A system for receiving, validating and processing user input.
+
+## ModelForm
+A Django form connected to a model that can generate fields, validate input and create or update model instances.
+
+## Inheritance
+A mechanism where one class receives capabilities from another class.
+
+## forms.ModelForm
+The Django class from which a custom ModelForm inherits its capabilities.
+
+## Meta
+An inner configuration class that tells a ModelForm which model and fields to use.
+
+## model
+The Meta option that specifies which Django model the ModelForm is connected to.
+
+## fields
+The Meta option that controls which model fields are exposed through the form.
+
+## fields = "__all__"
+A configuration that includes all editable model fields in a ModelForm.
+
+## Unbound Form
+A form without submitted data, usually created with `ClientForm()`.
+
+## Bound Form
+A form containing submitted data, usually created with `ClientForm(request.POST)`.
+
+## request
+An HttpRequest object automatically passed by Django to a view.
+
+## request.method
+The HTTP method used for the current request, such as GET or POST.
+
+## GET
+An HTTP request method generally used to retrieve a resource or page.
+
+## POST
+An HTTP request method generally used to submit data to the server.
+
+## request.POST
+A QueryDict containing submitted POST form data.
+
+## QueryDict
+Django's dictionary-like object used to store request data such as submitted POST form values.
+
+## Validation
+The process of checking whether submitted data follows required rules.
+
+## is_valid()
+A form method that runs validation and returns `True` or `False`.
+
+## Form Error
+A validation error stored inside a bound form when submitted data is invalid.
+
+## form.save()
+A ModelForm method that creates or updates and saves a model instance.
+
+## Model Instance
+A Python object representing one database record.
+
+## CSRF
+Cross-Site Request Forgery, a web attack involving unauthorized requests made using a user's authenticated session.
+
+## csrf_token
+A Django template tag used to protect POST forms against CSRF attacks.
+
+## 403 Forbidden
+An HTTP response indicating that access to a requested action or resource is forbidden. Django may return it when required CSRF protection fails.
+
+## form.as_p
+A form rendering method that displays form fields wrapped in HTML paragraph elements.
+
+## Context Dictionary
+A Python dictionary used to send data from a view to a template.
+
+## render()
+A Django shortcut that combines a template with context data and returns an HttpResponse.
+
+## redirect()
+A Django shortcut that returns a redirect response, causing the browser to make another request.
+
+## POST-Redirect-GET
+A web development pattern where a successful POST request is followed by a redirect and then a new GET request.
+
+## Duplicate Submission
+Accidentally submitting the same form data more than once, often caused by refreshing a POST response.
+
+## Least Privilege
+A security principle where users receive only the access required to perform their responsibilities.
+
+## Role-Based Access
+A design where permissions and available actions depend on the user's role.
+
+## Business Rule
+A requirement that determines how an application should behave according to organizational needs.
+
+## Relative Import
+An import that references modules relative to the current Python package.
+
+## Current-App Import
+Using `.` in an import such as `from .models import Client` to refer to a module inside the current app.
+
+## SQL INSERT
+The SQL operation used to add a new row to a database table.
+
+## ORM
+Object-Relational Mapping; Django's system for translating Python/model operations into database queries.
