@@ -1347,3 +1347,94 @@ The SQL operation used to add a new row to a database table.
 
 ## ORM
 Object-Relational Mapping; Django's system for translating Python/model operations into database queries.
+
+# ==========================================================
+# Django Glossary - Module 5.7
+# ==========================================================
+
+## Validation
+The process of checking whether submitted data follows application rules.
+
+## Built-in Validation
+Validation automatically provided by Django form and model fields.
+
+## Custom Validation
+Application-specific validation rules written by the developer.
+
+## is_valid()
+A form method that triggers validation and returns `True` or `False`.
+
+## Raw Data
+Submitted data that has not yet completed validation and conversion.
+
+## request.POST
+A QueryDict containing raw submitted POST form data.
+
+## cleaned_data
+A dictionary containing successfully validated and converted form values.
+
+## clean_<fieldname>()
+A custom validation method for one specific field.
+
+## clean_phone()
+A custom field-level validation method for a field named `phone`.
+
+## clean()
+A form-level validation method used when validation involves multiple fields together.
+
+## self
+A reference to the current form instance.
+
+## ValidationError
+An exception used to signal that submitted data has failed validation.
+
+## Field-Level Validation
+Validation applied to one specific field, even if that field has multiple rules.
+
+## Form-Level Validation
+Validation involving multiple form fields together.
+
+## Cross-Field Validation
+Validation that compares or depends on two or more fields.
+
+## Business Rule
+An application-specific requirement that determines valid behavior or data.
+
+## Business Logic
+Rules and processes controlling how an application behaves according to real organizational requirements.
+
+## Data Integrity
+The accuracy, consistency and reliability of stored data.
+
+## KeyError
+An error raised when attempting to access a dictionary key that does not exist using square brackets.
+
+## None
+A Python value representing the absence of a value.
+
+## .get()
+A dictionary method that returns a value if the key exists and `None` or a specified default if it does not.
+
+## Bound Form
+A form containing submitted data.
+
+## Form Error
+A validation error stored in a form after validation failure.
+
+## Error Attachment
+The association of a validation error with a particular field or the overall form.
+
+## Model Validation
+Validation rules associated with a Django model and its fields.
+
+## Permission Check
+A check determining whether a user is authorized to perform an action.
+
+## Service Layer
+An optional application architecture layer used to organize complex business operations outside views and forms.
+
+## Data Conversion
+The transformation of submitted textual data into suitable Python values, such as text `"21"` becoming integer `21`.
+
+## Reporting Accuracy
+The reliability of reports generated from stored application data.

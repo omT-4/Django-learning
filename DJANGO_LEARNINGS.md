@@ -5756,3 +5756,529 @@ get() is not required for ModelForm creation.
 ✓ form.as_p renders fields as paragraphs.
 ✓ POST-Redirect-GET helps prevent duplicate resubmission.
 ✓ Explicit fields and backend permissions improve security.
+
+# ==========================================================
+# Module 5.7 - Validation and Cleaning Data
+# ==========================================================
+
+## Learning Objectives
+- Understand validation and why it is necessary.
+- Understand built-in validation.
+- Understand is_valid().
+- Understand raw data vs cleaned_data.
+- Access cleaned data.
+- Create custom field validation.
+- Understand ValidationError.
+- Understand field-level and form-level validation.
+- Understand where deeper business logic belongs.
+
+## What is Validation?
+Validation checks whether submitted data follows application rules.
+
+```text
+Submitted Data → Validation → Valid? → Save / Show Errors
+```
+
+Validation protects data integrity, reliability, reporting and business workflows.
+
+## Built-in Validation
+Model and form fields provide validation rules.
+
+```python
+email = models.EmailField()
+name = models.CharField(max_length=100)
+```
+
+Examples:
+- Email format.
+- Required fields.
+- Maximum length.
+- Data type conversion.
+
+```text
+Model Field Rules → ModelForm → Form Validation
+```
+
+## is_valid()
+
+```python
+form.is_valid()
+```
+
+Triggers validation and returns:
+
+```text
+True → Form is valid.
+False → Form is invalid and errors are stored.
+```
+
+It does not save data.
+
+## Raw Data vs Cleaned Data
+
+```text
+request.POST → Raw submitted data.
+cleaned_data → Successfully validated and converted data.
+```
+
+Example:
+
+```text
+Raw "21" → Python integer 21
+Raw date text → Python date object
+```
+
+## cleaned_data
+
+```python
+form.cleaned_data
+```
+
+Contains successfully cleaned field values after validation.
+
+Example:
+
+```python
+{
+    "name": "Rahul Sharma",
+    "email": "rahul@example.com",
+    "phone": "9876543210"
+}
+```
+
+Access:
+
+```python
+name = form.cleaned_data["name"]
+```
+
+or:
+
+```python
+name = form.cleaned_data.get("name")
+```
+
+Normally access cleaned_data after validation has run.
+
+## Custom Field Validation
+
+Naming pattern:
+
+```text
+clean_<fieldname>()
+```
+
+Examples:
+
+```text
+phone → clean_phone()
+email → clean_email()
+deadline → clean_deadline()
+```
+
+Django automatically runs these methods during validation.
+
+## clean_phone()
+
+```python
+def clean_phone(self):
+    phone = self.cleaned_data["phone"]
+
+    if not phone.isdigit():
+        raise forms.ValidationError(
+            "Phone number must contain only digits."
+        )
+
+    if len(phone) != 10:
+        raise forms.ValidationError(
+            "Phone number must contain exactly 10 digits."
+        )
+
+    return phone
+```
+
+Workflow:
+
+```text
+Basic Field Validation
+→ Retrieve cleaned phone
+→ Apply custom rules
+→ Invalid? Raise ValidationError
+→ Valid? Return phone
+```
+
+## Understanding self
+
+```python
+def clean_phone(self):
+```
+
+`self` refers to the current form instance.
+
+Therefore:
+
+```python
+self.cleaned_data
+```
+
+means the cleaned data belonging to the current form.
+
+## Why Return the Cleaned Value?
+
+```python
+return phone
+```
+
+A `clean_<fieldname>()` method should return the approved cleaned value.
+
+Pattern:
+
+```text
+Get Value → Check Rules → Raise Error if Invalid → Return Value if Valid
+```
+
+Returning the value does not immediately save it to the database. The complete form must first pass validation, and then `form.save()` must execute.
+
+## ValidationError
+
+```python
+raise forms.ValidationError("Invalid phone number.")
+```
+
+Signals that validation has failed.
+
+Workflow:
+
+```text
+Invalid Value
+→ ValidationError
+→ Error attached to form
+→ is_valid() returns False
+→ View renders same bound form
+→ Template displays error
+```
+
+ValidationError itself does not directly display anything in the browser.
+
+## Better Phone Validation
+
+Length alone is insufficient:
+
+```text
+abcdefghij
+```
+
+has 10 characters.
+
+Use:
+
+```python
+if not phone.isdigit():
+```
+
+and:
+
+```python
+if len(phone) != 10:
+```
+
+## Deadline Validation
+
+```python
+from django.utils import timezone
+
+def clean_deadline(self):
+    deadline = self.cleaned_data["deadline"]
+
+    if deadline < timezone.localdate():
+        raise forms.ValidationError(
+            "Deadline cannot be in the past."
+        )
+
+    return deadline
+```
+
+This is a custom business rule because Django cannot automatically know the application's deadline policy.
+
+## Field-Level Validation
+
+Used when validating one specific field.
+
+```python
+def clean_phone(self):
+```
+
+Even if one field has many rules, field-level validation remains appropriate.
+
+Example:
+
+```text
+Phone must:
+- Contain digits.
+- Be exactly 10 digits.
+- Start with an allowed digit.
+
+Still → clean_phone()
+```
+
+## Form-Level Validation
+
+Used when multiple fields must be compared together.
+
+```python
+def clean(self):
+    cleaned_data = super().clean()
+
+    start_date = cleaned_data.get("start_date")
+    end_date = cleaned_data.get("end_date")
+
+    if start_date and end_date and start_date > end_date:
+        raise forms.ValidationError(
+            "Start date cannot be after end date."
+        )
+
+    return cleaned_data
+```
+
+Example:
+
+```text
+start_date + end_date → clean()
+```
+
+## Important Distinction
+
+```text
+One field with many rules
+→ clean_<fieldname>()
+
+Multiple fields compared together
+→ clean()
+
+Broader workflow, permissions or database state
+→ Deeper backend business logic
+```
+
+## PAN Example
+
+Rules such as:
+
+```text
+PAN must have required length.
+Certain characters must be letters.
+Certain characters must be digits.
+```
+
+all apply to one field.
+
+Therefore:
+
+```python
+def clean_pan_number(self):
+```
+
+not necessarily `clean()`.
+
+## cleaned_data["field"] vs cleaned_data.get("field")
+
+```python
+self.cleaned_data["phone"]
+```
+
+Expects the key to exist. Can raise `KeyError` if missing.
+
+```python
+self.cleaned_data.get("phone")
+```
+
+Returns `None` if the key doesn't exist.
+
+`.get()` can be safer when another validation stage may already have removed or rejected a field.
+
+## Invalid Form Workflow
+
+```text
+Browser
+→ HTTP POST
+→ URL Routing
+→ View
+→ ClientForm(request.POST)
+→ Bound Form
+→ form.is_valid()
+→ Built-in Validation
+→ Custom clean_<fieldname>()
+→ ValidationError
+→ Error Attached to Form
+→ is_valid() returns False
+→ save() Does Not Execute
+→ Same Bound Form + Errors
+→ Context
+→ render()
+→ Template
+→ Browser Displays Errors
+```
+
+## Valid Form Workflow
+
+```text
+Browser
+→ POST
+→ View
+→ Bound ModelForm
+→ is_valid()
+→ Built-in Validation
+→ Custom Field Validation
+→ Form-Level Validation
+→ Valid
+→ True
+→ form.save()
+→ Model Instance
+→ ORM
+→ SQL INSERT/UPDATE
+→ Database
+```
+
+## Displaying Errors
+
+Display form:
+
+```django
+{{ form.as_p }}
+```
+
+Display all errors:
+
+```django
+{{ form.errors }}
+```
+
+Display phone errors:
+
+```django
+{{ form.phone.errors }}
+```
+
+The bound form retains submitted values when validation fails.
+
+## Built-in vs Custom Validation
+
+| Built-in | Custom |
+|---|---|
+| Email format | Exact phone rules |
+| Required fields | Deadline cannot be past |
+| Maximum length | Organization rules |
+| Data conversion | Cross-field rules |
+
+## Deeper Business Logic
+
+Some rules depend on more than simple form input.
+
+Example:
+
+```text
+Client cannot become Completed
+unless:
+- Required documents exist.
+- Mandatory tasks are complete.
+- Required approvals are complete.
+```
+
+Such rules may require:
+- Form-level validation.
+- Model validation.
+- Permission checks.
+- Service/business-logic layer.
+
+## CRMS Validation Examples
+
+```text
+Client Name → Cannot be empty.
+Phone → Valid required format.
+Email → Valid email format.
+Deadline → Cannot be in past.
+Document Type → Must be supported.
+Assigned Employee → Must be authorized.
+Status → Cannot violate workflow rules.
+```
+
+## Common Mistakes
+
+### Thinking is_valid() Saves Data
+Wrong:
+
+```text
+is_valid() → Saves data
+```
+
+Correct:
+
+```text
+is_valid() → Validates.
+save() → Saves.
+```
+
+### Accessing cleaned_data Too Early
+Prefer:
+
+```python
+if form.is_valid():
+    email = form.cleaned_data["email"]
+```
+
+### Forgetting return
+
+```python
+def clean_phone(self):
+    phone = self.cleaned_data["phone"]
+    # validation
+    return phone
+```
+
+### Checking Only Length
+Ten letters can also have length 10. Validate format too.
+
+### Confusing Many Rules with Many Fields
+
+```text
+One field + many rules → clean_<fieldname>()
+Multiple fields together → clean()
+```
+
+## Software Engineering Perspective
+
+Validation improves:
+- Data integrity.
+- Productivity.
+- Scalability.
+- Reporting accuracy.
+- Reliability.
+- User experience.
+- Business operations.
+- Cost efficiency.
+
+Bad data can cause:
+
+```text
+Invalid Data
+→ Incorrect Records
+→ Incorrect Reports
+→ Incorrect Decisions
+→ Financial/Operational Consequences
+```
+
+## Key Takeaways
+
+✓ Validation checks application rules.
+✓ is_valid() triggers validation.
+✓ is_valid() returns True or False.
+✓ is_valid() does not save data.
+✓ request.POST contains raw submitted data.
+✓ cleaned_data contains validated and converted values.
+✓ clean_<fieldname>() validates one field.
+✓ clean() validates relationships between multiple fields.
+✓ ValidationError signals validation failure.
+✓ Custom cleaning methods must return valid cleaned values.
+✓ Returning a value does not immediately save it.
+✓ `.get()` can safely return None for missing keys.
+✓ Invalid forms retain submitted values and errors.
+✓ Broader workflow and authorization rules may require deeper backend logic.

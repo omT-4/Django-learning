@@ -1625,3 +1625,139 @@ POST → ClientForm(request.POST) → is_valid() returns False → Form Errors �
 ```text
 POST → Save → Redirect → GET
 ```
+
+# ==========================================================
+# Module 5.7 - Validation and Cleaning Data
+# ==========================================================
+
+## Trigger Form Validation
+
+```python
+form.is_valid()
+```
+
+Returns `True` or `False`.
+
+## Access All Cleaned Data
+
+```python
+form.cleaned_data
+```
+
+## Access One Cleaned Field
+
+```python
+form.cleaned_data["phone"]
+```
+
+## Safely Access Cleaned Field
+
+```python
+form.cleaned_data.get("phone")
+```
+
+Returns `None` if missing.
+
+## Custom Field Validation
+
+```python
+def clean_phone(self):
+    phone = self.cleaned_data["phone"]
+
+    if not phone.isdigit():
+        raise forms.ValidationError(
+            "Phone number must contain only digits."
+        )
+
+    if len(phone) != 10:
+        raise forms.ValidationError(
+            "Phone number must contain exactly 10 digits."
+        )
+
+    return phone
+```
+
+## Raise Validation Error
+
+```python
+raise forms.ValidationError("Invalid value.")
+```
+
+## Custom Deadline Validation
+
+```python
+from django.utils import timezone
+
+def clean_deadline(self):
+    deadline = self.cleaned_data["deadline"]
+
+    if deadline < timezone.localdate():
+        raise forms.ValidationError(
+            "Deadline cannot be in the past."
+        )
+
+    return deadline
+```
+
+## Form-Level Validation
+
+```python
+def clean(self):
+    cleaned_data = super().clean()
+
+    start_date = cleaned_data.get("start_date")
+    end_date = cleaned_data.get("end_date")
+
+    if start_date and end_date and start_date > end_date:
+        raise forms.ValidationError(
+            "Start date cannot be after end date."
+        )
+
+    return cleaned_data
+```
+
+## Display Form and Field Errors
+
+```django
+{{ form.as_p }}
+```
+
+## Display All Errors
+
+```django
+{{ form.errors }}
+```
+
+## Display Specific Field Errors
+
+```django
+{{ form.phone.errors }}
+```
+
+## Correct Validation and Save Pattern
+
+```python
+form = ClientForm(request.POST)
+
+if form.is_valid():
+    form.save()
+```
+
+## Field-Level Pattern
+
+```text
+One field → clean_<fieldname>()
+```
+
+## Form-Level Pattern
+
+```text
+Multiple fields together → clean()
+```
+
+## Deeper Business Logic Pattern
+
+```text
+Workflow + Permissions + Database State
+→ Backend business logic / permission checks
+```
