@@ -1371,3 +1371,55 @@ get() → Modify Fields → save()
 |-----|-----|
 | get() | SELECT |
 | save() (existing object) | UPDATE |
+
+# ==========================================================
+# Module 5.4 - Deleting Records
+# ==========================================================
+
+## Delete One Record
+
+```python
+object = Model.objects.get(id=value)
+object.delete()
+```
+
+Example:
+
+```python
+client = Client.objects.get(id=5)
+client.delete()
+```
+
+---
+
+## Delete Multiple Matching Records
+
+```python
+Model.objects.filter(condition).delete()
+```
+
+Example:
+
+```python
+Client.objects.filter(status="Inactive").delete()
+```
+
+---
+
+## SQL Mapping
+
+| ORM | SQL |
+|---|---|
+| get() | SELECT |
+| delete() | DELETE |
+
+---
+
+## CRUD Summary
+
+| CRUD | Django ORM | SQL |
+|---|---|---|
+| Create | create() / save() | INSERT |
+| Read | all() / filter() / get() | SELECT |
+| Update | get() + modify + save() | UPDATE |
+| Delete | get() + delete() | DELETE |

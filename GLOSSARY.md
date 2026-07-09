@@ -1160,3 +1160,34 @@ An unnecessary second copy of the same logical entity.
 ## Record Lifecycle
 
 Create → Read → Update → Delete (CRUD)
+
+# ==========================================================
+# Django Glossary - Module 5.4
+# ==========================================================
+
+## delete()
+A Django ORM method that permanently removes the targeted record or records.
+
+## SQL DELETE
+The SQL operation used to remove database rows.
+
+## Hard Delete
+Permanent removal of a database record.
+
+## Soft Delete
+Preserving a record while marking it inactive instead of permanently removing it.
+
+## CASCADE
+A deletion behavior where deleting a parent record also deletes related child records.
+
+## Data Integrity
+Keeping data accurate, valid and trustworthy.
+
+## Auditability
+The ability to trace historical records and past actions.
+
+## Reversibility
+The ability to undo or recover from an action.
+
+## Business Rule
+A requirement defining how software should behave according to real organizational needs.

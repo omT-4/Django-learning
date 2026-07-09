@@ -4780,3 +4780,142 @@ Updating preserves:
 ✓ save() writes changes.
 
 ✓ save() performs UPDATE for existing objects.
+
+# ==========================================================
+# Module 5.4 - Deleting Records with delete()
+# ==========================================================
+
+## Learning Objectives
+- Delete existing database records.
+- Understand delete().
+- Understand SQL DELETE.
+- Understand CASCADE deletion.
+- Differentiate hard deletion from soft deletion.
+
+---
+
+## The Four Fundamental Questions
+
+### What is delete()?
+A Django ORM method used to permanently remove database records.
+
+### Why?
+To remove duplicate, incorrect, test or unnecessary records.
+
+### What problem does it solve?
+It prevents unwanted records from remaining permanently in the database.
+
+### Workflow
+Browser → HTTP Request → URL → View → get() → ORM → SQL SELECT → Database → Model Object → delete() → ORM → SQL DELETE → Database → Response → Browser
+
+---
+
+## Deleting One Record
+
+```python
+client = Client.objects.get(id=5)
+client.delete()
+```
+
+Step 1: Retrieve the model object.
+Step 2: Permanently delete it.
+
+---
+
+## SQL Equivalent
+
+```sql
+DELETE FROM Client
+WHERE id=5;
+```
+
+---
+
+## Update vs Delete
+
+| Update | Delete |
+|---|---|
+| Modifies existing record | Removes existing record |
+| get() + modify + save() | get() + delete() |
+| SQL UPDATE | SQL DELETE |
+| Record remains | Record is removed |
+
+---
+
+## CASCADE
+
+```python
+lawyer = models.ForeignKey(
+    Lawyer,
+    on_delete=models.CASCADE
+)
+```
+
+If the parent Lawyer is deleted, related Client records are also deleted.
+
+---
+
+## Hard Delete vs Soft Delete
+
+### Hard Delete
+Record is permanently removed.
+
+### Soft Delete
+Record remains but is marked inactive.
+
+Example:
+
+```python
+is_active = models.BooleanField(default=True)
+```
+
+Soft deletion is useful when historical data, auditing or restoration is important.
+
+---
+
+## Important Correction
+
+get() is not mandatory for every deletion.
+
+Single object:
+
+```python
+client = Client.objects.get(id=5)
+client.delete()
+```
+
+Multiple matching objects:
+
+```python
+Client.objects.filter(status="Inactive").delete()
+```
+
+Django deletes only the explicitly targeted object or QuerySet.
+
+---
+
+## Software Engineering Perspective
+
+Before deleting data, consider:
+
+- Data integrity
+- Maintainability
+- Reliability
+- Auditability
+- Business requirements
+- Reversibility
+- Related records
+
+---
+
+## Key Takeaways
+
+✓ delete() permanently removes records.
+
+✓ SQL DELETE is generated internally.
+
+✓ CASCADE may delete related child records.
+
+✓ Use Update for corrections.
+
+✓ Consider soft deletion when historical data must be preserved.
