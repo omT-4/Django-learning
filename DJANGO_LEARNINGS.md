@@ -6282,3 +6282,251 @@ Invalid Data
 ✓ `.get()` can safely return None for missing keys.
 ✓ Invalid forms retain submitted values and errors.
 ✓ Broader workflow and authorization rules may require deeper backend logic.
+
+# ==========================================================
+# Day 6 - Module 6.1 - Introduction to Authentication
+# ==========================================================
+
+## Learning Objectives
+- Authentication
+- Authorization
+- User
+- Session
+- Password Hashing
+- Login
+- Logout
+- Django Authentication Framework
+- Authentication Workflow
+
+# Authentication
+
+Authentication verifies the identity of a user.
+
+Question answered:
+
+"Who are you?"
+
+Examples:
+- Gmail Login
+- Instagram Login
+- ATM Card + PIN
+- Fingerprint Unlock
+
+Workflow:
+
+User
+→ Username & Password
+→ Authentication
+→ Identity Verified
+
+# Authorization
+
+Authorization determines what an authenticated user is allowed to do.
+
+Question answered:
+
+"What are you allowed to do?"
+
+Examples:
+- Employee can view clients.
+- Receptionist cannot view salaries.
+- Owner can create admins.
+- Lawyer can edit assigned clients.
+
+Workflow:
+
+Authentication
+→ User Identified
+→ Authorization
+→ Permissions Checked
+→ Access Granted / Denied
+
+# Authentication vs Authorization
+
+Authentication:
+- Verifies identity.
+- Happens before authorization.
+
+Authorization:
+- Checks permissions.
+- Happens after authentication.
+
+Rule:
+
+Authentication
+→ WHO are you?
+
+Authorization
+→ WHAT can you do?
+
+# Django User
+
+A User is an object representing someone who can log into the application.
+
+Common fields:
+
+- id
+- username
+- email
+- password (hashed)
+- first_name
+- last_name
+- is_active
+- is_staff
+- is_superuser
+
+# Password Hashing
+
+Passwords are never stored as plain text.
+
+Instead Django stores:
+
+pbkdf2_sha256$...
+
+Hashing is one-way.
+
+Workflow:
+
+User Password
+→ Hash
+→ Store Hash
+
+Login:
+
+Entered Password
+→ Hash Again
+→ Compare Hashes
+→ Match?
+→ Login Success
+
+Advantages:
+- Protects user privacy.
+- Database leak doesn't expose passwords.
+- Company cannot recover original passwords.
+
+# Session
+
+A Session is a temporary identity maintained after successful login.
+
+Purpose:
+- Avoid entering password on every page.
+- Remember logged-in user.
+
+Workflow:
+
+Login
+→ Session Created
+→ Session ID
+→ Browser Cookie
+→ Future Requests
+→ Session Verified
+→ request.user available
+
+Session ends when:
+- User logs out.
+- Session expires.
+- Server invalidates session.
+
+# Login
+
+Successful login:
+
+Valid Credentials
+→ authenticate()
+→ Password Hash Verification
+→ login()
+→ Session Created
+→ Browser Stores Session Cookie
+→ User Authenticated
+
+# Logout
+
+Workflow:
+
+User
+→ logout()
+→ Session Destroyed
+→ Session Cookie Removed
+→ Anonymous User
+
+# Anonymous User
+
+User who is not logged in.
+
+Occurs when:
+- Never logged in.
+- Logged out.
+- Session expired.
+
+# Authenticated User
+
+User whose identity has been successfully verified.
+
+Can perform actions according to permissions.
+
+# Superuser
+
+Highest privileged Django user.
+
+Capabilities:
+- Django Admin Access
+- Manage Users
+- Manage Groups
+- CRUD Operations
+- Assign Permissions
+
+# Complete Authentication Workflow
+
+User
+→ Username + Password
+→ Browser
+→ HTTP POST
+→ View
+→ authenticate()
+→ Django Authentication System
+→ User Table
+→ Password Hash Verification
+→ Valid?
+    ├── Yes
+    │     → login()
+    │     → Session Created
+    │     → Session Cookie
+    │     → Future Requests
+    │     → request.user
+    └── No
+          → Invalid Credentials
+          → Login Page Again
+
+Logout:
+
+User
+→ logout()
+→ Session Destroyed
+→ Browser Removes Cookie
+→ Anonymous User
+
+# Authentication in CRMS
+
+Authentication:
+- Login
+- Logout
+- Identity Verification
+
+Authorization:
+- Employee cannot delete records.
+- Receptionist cannot view salaries.
+- Lawyer edits assigned clients.
+- Owner manages admins.
+
+# Key Takeaways
+
+✓ Authentication verifies identity.
+✓ Authorization controls permissions.
+✓ Authentication always happens before authorization.
+✓ Django stores hashed passwords.
+✓ Hashing is one-way.
+✓ Sessions remember logged-in users.
+✓ Browser stores Session ID in cookies.
+✓ logout() destroys session.
+✓ Anonymous users are not logged in.
+✓ Superuser has highest permissions.

@@ -1438,3 +1438,70 @@ The transformation of submitted textual data into suitable Python values, such a
 
 ## Reporting Accuracy
 The reliability of reports generated from stored application data.
+
+# ==========================================================
+# Day 6 - Module 6.1 Glossary
+# ==========================================================
+
+Authentication
+Verifying the identity of a user.
+
+Authorization
+Determining what an authenticated user is allowed to do.
+
+User
+An object representing someone who can log into the application.
+
+Anonymous User
+A user who has not been authenticated.
+
+Authenticated User
+A user whose identity has been successfully verified.
+
+Superuser
+A Django user with unrestricted administrative privileges.
+
+Session
+Temporary identity maintained after successful login.
+
+Session ID
+Unique identifier stored by the browser to recognize a logged-in user.
+
+Cookie
+Small data stored in the browser containing the Session ID.
+
+Hashing
+One-way conversion of data into a secure hash value.
+
+Password Hash
+Hashed representation of the original password.
+
+authenticate()
+Verifies user credentials.
+
+login()
+Creates a session after successful authentication.
+
+logout()
+Destroys the current session.
+
+request.user
+Represents the current user making the request.
+
+Identity Verification
+The process of confirming who a user is.
+
+Permission
+An allowed action assigned to a user.
+
+Authentication Framework
+Django's built-in system for user authentication and session management.
+
+User Table
+Database table storing user information such as username, email and hashed password.
+
+PBKDF2
+The password hashing algorithm used by Django by default.
+
+Session Cookie
+Browser cookie storing the Session ID after login.

@@ -1761,3 +1761,47 @@ Multiple fields together → clean()
 Workflow + Permissions + Database State
 → Backend business logic / permission checks
 ```
+
+# ==========================================================
+# Day 6 - Module 6.1 Commands
+# ==========================================================
+
+## Authentication
+
+authenticate()
+
+Verifies username and password.
+
+## Login
+
+login(request, user)
+
+Creates a session for an authenticated user.
+
+## Logout
+
+logout(request)
+
+Destroys the current session.
+
+## Current Logged-in User
+
+request.user
+
+Returns the current user.
+
+## Check Authentication
+
+request.user.is_authenticated
+
+Returns:
+True
+False
+
+## Anonymous User
+
+request.user.is_anonymous
+
+Returns:
+True
+False
