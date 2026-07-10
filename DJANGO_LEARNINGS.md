@@ -6717,3 +6717,138 @@ Username + Password
 ✓ is_staff controls admin access.
 ✓ is_superuser gives highest privileges.
 ✓ Django's User model improves productivity and security.
+
+# ==========================================================
+# Day 6 - Module 6.3 - Login, Logout & Sessions
+# ==========================================================
+
+## Learning Objectives
+- authenticate()
+- login()
+- logout()
+- request.user
+- Sessions
+- Session Cookies
+- Login & Logout Workflow
+
+## authenticate()
+
+Purpose:
+Verify user credentials.
+
+Returns:
+- User object (valid credentials)
+- None (invalid credentials)
+
+Workflow:
+Username + Password
+→ authenticate()
+→ Authentication System
+→ User Table
+→ Hash Password
+→ Compare Hashes
+→ User Object / None
+
+## login()
+
+Purpose:
+Log in an authenticated user.
+
+Creates:
+- Session
+- Session ID
+- Browser Cookie
+
+Workflow:
+User Object
+→ login()
+→ Session Created
+→ Session ID
+→ Cookie Stored
+→ Future Requests
+
+## logout()
+
+Purpose:
+End the current session.
+
+Workflow:
+logout()
+→ Session Destroyed
+→ Cookie Removed
+→ AnonymousUser
+
+## request.user
+
+Represents the current user making the request.
+
+Before login:
+AnonymousUser
+
+After login:
+Authenticated User object
+
+After logout:
+AnonymousUser
+
+Useful attributes:
+- request.user.username
+- request.user.email
+- request.user.is_staff
+- request.user.is_superuser
+- request.user.is_authenticated
+
+## Login Workflow
+
+Browser
+→ Login Form
+→ POST Request
+→ View
+→ authenticate()
+→ User Table
+→ Hash Password
+→ Compare Hashes
+→ Valid?
+    ├── No → Invalid Login
+    └── Yes
+          → User Object
+          → login()
+          → Session Created
+          → Session Cookie
+          → request.user
+          → Dashboard
+
+## Logout Workflow
+
+Authenticated User
+→ logout()
+→ Session Destroyed
+→ Cookie Removed
+→ AnonymousUser
+→ Redirect
+
+## authenticate() vs login() vs logout()
+
+authenticate()
+- Verifies credentials
+- Returns User/None
+- Does not create a session
+
+login()
+- Creates a session
+- Stores session cookie
+- User becomes authenticated
+
+logout()
+- Removes session
+- Deletes session cookie
+- User becomes anonymous
+
+## Key Takeaways
+
+✓ authenticate() verifies identity.
+✓ login() creates a session.
+✓ logout() destroys the session.
+✓ request.user contains the current User object.
+✓ Sessions allow future requests without re-entering the password.
+✓ Cookies store the Session ID in the browser.

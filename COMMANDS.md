@@ -1844,3 +1844,40 @@ is_staff
 is_superuser
 date_joined
 last_login
+
+# ==========================================================
+# Day 6 - Module 6.3 Glossary
+# ==========================================================
+
+authenticate()
+Verifies user credentials and returns a User object or None.
+
+login()
+Creates a session for an authenticated user.
+
+logout()
+Destroys the current session.
+
+User Object
+The authenticated Django User instance.
+
+request.user
+The current user associated with the request.
+
+AnonymousUser
+A special object representing a user who is not logged in.
+
+Session
+Server-side data used to remember a logged-in user.
+
+Session ID
+Unique identifier linking the browser to the server-side session.
+
+Session Cookie
+Browser cookie storing the Session ID.
+
+Authenticated User
+A user whose identity has been verified and who has an active session.
+
+is_authenticated
+Property indicating whether the current user is logged in.

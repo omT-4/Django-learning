@@ -1560,3 +1560,50 @@ Highest privileged Django user.
 
 PBKDF2
 Django's default password hashing algorithm.
+
+# ==========================================================
+# Day 6 - Module 6.3 Commands
+# ==========================================================
+
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
+
+## Authenticate
+
+user = authenticate(
+    username="om",
+    password="abc123"
+)
+
+## Login
+
+login(request, user)
+
+## Logout
+
+logout(request)
+
+## Current User
+
+request.user
+
+## Check Authentication
+
+request.user.is_authenticated
+
+## Username
+
+request.user.username
+
+## Email
+
+request.user.email
+
+## Staff Check
+
+request.user.is_staff
+
+## Superuser Check
+
+request.user.is_superuser
