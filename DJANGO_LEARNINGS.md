@@ -6852,3 +6852,134 @@ logout()
 ✓ request.user contains the current User object.
 ✓ Sessions allow future requests without re-entering the password.
 ✓ Cookies store the Session ID in the browser.
+
+# ==========================================================
+# Day 6 - Module 6.4 - User Registration (UserCreationForm)
+# ==========================================================
+
+## Learning Objectives
+- UserCreationForm
+- Registration
+- Password Confirmation
+- Validation
+- Password Hashing
+- Registration Workflow
+
+## UserCreationForm
+
+Import:
+
+from django.contrib.auth.forms import UserCreationForm
+
+Purpose:
+- Built-in registration form
+- Specifically designed for Django User model
+
+Provides:
+- Username
+- Password1
+- Password2
+- Validation
+- Password hashing
+
+## Default Fields
+
+- username
+- password1
+- password2
+
+## Why Two Password Fields?
+
+Password1
+→ Original password
+
+Password2
+→ Confirmation password
+
+Purpose:
+- Prevent typing mistakes
+- Ensure intended password is stored
+
+## GET Request
+
+UserCreationForm()
+
+Creates an empty (unbound) registration form.
+
+## POST Request
+
+UserCreationForm(request.POST)
+
+Creates a bound form containing submitted user data.
+
+## Built-in Validation
+
+Checks:
+- Username uniqueness
+- Password confirmation
+- Password length
+- Password similarity
+- Numeric-only password
+
+If validation fails:
+- Error messages displayed
+- User remains on registration page
+
+## form.save()
+
+Workflow:
+
+form.save()
+→ create_user()
+→ Password Hashing
+→ User Model
+→ ORM
+→ SQL INSERT
+→ Database
+→ User Account Created
+
+## Registration Workflow
+
+Browser
+→ GET
+→ UserCreationForm()
+→ Empty Form
+→ User Enters Data
+→ POST
+→ UserCreationForm(request.POST)
+→ Validation
+→ Username Unique?
+→ Passwords Match?
+→ Strong Password?
+→ Valid?
+    ├── No → Display Errors
+    └── Yes
+          → form.save()
+          → create_user()
+          → Password Hashing
+          → ORM
+          → SQL INSERT
+          → Database
+          → Redirect
+
+## ModelForm vs UserCreationForm
+
+ModelForm
+- Used for custom models
+- General CRUD
+- No password confirmation by default
+
+UserCreationForm
+- Used for Django User model
+- Registration only
+- Built-in validation
+- Password confirmation
+- Automatic password hashing
+
+## Key Takeaways
+
+✓ UserCreationForm is built specifically for user registration.
+✓ Automatically validates username and passwords.
+✓ Passwords are hashed before storage.
+✓ Password confirmation prevents typing mistakes.
+✓ form.save() creates a secure user account.

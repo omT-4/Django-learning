@@ -1607,3 +1607,40 @@ request.user.is_staff
 ## Superuser Check
 
 request.user.is_superuser
+
+# ==========================================================
+# Day 6 - Module 6.4 Glossary
+# ==========================================================
+
+UserCreationForm
+Built-in Django form for securely registering new users.
+
+Registration
+Process of creating a new user account.
+
+Unbound Form
+Empty form displayed to the user.
+
+Bound Form
+Form containing submitted user data.
+
+Password1
+Primary password field.
+
+Password2
+Confirmation password field.
+
+Username Validation
+Checks whether the username is unique.
+
+Password Confirmation
+Ensures Password1 and Password2 are identical.
+
+Password Strength Validation
+Checks password length, similarity, common passwords, and numeric-only passwords.
+
+form.is_valid()
+Runs all built-in validations.
+
+form.save()
+Creates a new user, hashes the password, and stores the account in the database.

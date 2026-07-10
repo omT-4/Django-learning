@@ -1881,3 +1881,27 @@ A user whose identity has been verified and who has an active session.
 
 is_authenticated
 Property indicating whether the current user is logged in.
+
+# ==========================================================
+# Day 6 - Module 6.4 Commands
+# ==========================================================
+
+## Import
+
+from django.contrib.auth.forms import UserCreationForm
+
+## Empty Form
+
+form = UserCreationForm()
+
+## Bound Form
+
+form = UserCreationForm(request.POST)
+
+## Validation
+
+form.is_valid()
+
+## Save User
+
+form.save()
