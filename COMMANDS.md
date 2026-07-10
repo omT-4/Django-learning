@@ -1923,3 +1923,13 @@ request.user.is_authenticated
 LOGIN_URL = "/login/"
 
 LOGIN_REDIRECT_URL = "/dashboard/"
+
+# ==========================================================
+# Day 6 - Module 6.6 Commands
+# ==========================================================
+
+request.user.has_perm("app.permission_name")
+
+request.user.is_staff
+
+request.user.is_superuser

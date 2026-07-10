@@ -1675,3 +1675,31 @@ Verifies the identity of a user.
 
 Authorization
 Determines what an authenticated user is allowed to do.
+
+# ==========================================================
+# Day 6 - Module 6.6 Glossary
+# ==========================================================
+
+Authorization
+Determines what an authenticated user is allowed to do.
+
+Permission
+A rule allowing or denying a specific action.
+
+Group
+A collection of users sharing the same permissions.
+
+has_perm()
+Checks whether the current user has a specific permission.
+
+is_staff
+Allows access to Django Admin.
+
+is_superuser
+Grants every permission automatically.
+
+Least Privilege Principle
+Giving users only the permissions needed to perform their job.
+
+Permission Denied
+Response returned when a user lacks the required permission.

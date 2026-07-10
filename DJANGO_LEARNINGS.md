@@ -7108,3 +7108,115 @@ Browser
 ✓ Authenticated users can access protected views.
 ✓ LOGIN_REDIRECT_URL controls where users go after login.
 ✓ login_required checks authentication, not authorization.
+
+# ==========================================================
+# Day 6 - Module 6.6 - Authorization, Permissions & Groups
+# ==========================================================
+
+## Learning Objectives
+- Authorization
+- Permissions
+- Groups
+- has_perm()
+- is_staff
+- is_superuser
+
+## Authorization
+
+Determines what an authenticated user is allowed to do.
+
+Question:
+"What are you allowed to do?"
+
+## Authentication vs Authorization
+
+Authentication
+- Verifies identity
+- Uses authenticate() and login()
+
+Authorization
+- Checks permissions
+- Uses request.user.has_perm()
+
+## Django Permissions
+
+Every model automatically gets permissions:
+
+- Add
+- Change
+- Delete
+- View
+
+Example:
+
+Client Model
+
+→ Add Client
+→ Change Client
+→ Delete Client
+→ View Client
+
+## request.user.has_perm()
+
+Purpose:
+Checks whether the current user has a specific permission.
+
+Returns:
+- True
+- False
+
+Example:
+
+request.user.has_perm("crm.delete_client")
+
+## Groups
+
+Purpose:
+Assign permissions to many users at once.
+
+Benefits:
+- Less repetitive work
+- Easier maintenance
+- Better scalability
+
+Examples:
+- Manager
+- Receptionist
+- Lawyer
+- HR
+
+## is_staff
+
+Allows access to Django Admin.
+
+Does not grant every permission.
+
+## is_superuser
+
+Has all permissions automatically.
+
+Permission checks always succeed.
+
+## Authorization Workflow
+
+Browser
+→ Protected View
+→ @login_required
+→ Authenticated?
+→ request.user.has_perm()
+→ Allowed?
+    ├── No → Permission Denied
+    └── Yes → Execute View
+
+## Least Privilege Principle
+
+Give users only the permissions required for their job.
+
+## Key Takeaways
+
+✓ Authentication verifies identity.
+✓ Authorization verifies permissions.
+✓ Permissions belong to users or groups.
+✓ Groups simplify permission management.
+✓ has_perm() checks authorization.
+✓ Superusers bypass permission checks.
