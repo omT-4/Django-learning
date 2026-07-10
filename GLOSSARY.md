@@ -1644,3 +1644,34 @@ Runs all built-in validations.
 
 form.save()
 Creates a new user, hashes the password, and stores the account in the database.
+
+# ==========================================================
+# Day 6 - Module 6.5 Glossary
+# ==========================================================
+
+Protected View
+A view accessible only to authenticated users.
+
+login_required
+Decorator that restricts access to authenticated users.
+
+AnonymousUser
+Represents a user who is not logged in.
+
+Authenticated User
+A user with a valid authenticated session.
+
+request.user.is_authenticated
+Boolean indicating whether the current user is logged in.
+
+LOGIN_URL
+URL where unauthenticated users are redirected.
+
+LOGIN_REDIRECT_URL
+URL where users are redirected after successful login.
+
+Authentication
+Verifies the identity of a user.
+
+Authorization
+Determines what an authenticated user is allowed to do.

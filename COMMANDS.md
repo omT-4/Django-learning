@@ -1905,3 +1905,21 @@ form.is_valid()
 ## Save User
 
 form.save()
+
+# ==========================================================
+# Day 6 - Module 6.5 Commands
+# ==========================================================
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard(request):
+    ...
+
+request.user.is_authenticated
+
+# settings.py
+
+LOGIN_URL = "/login/"
+
+LOGIN_REDIRECT_URL = "/dashboard/"

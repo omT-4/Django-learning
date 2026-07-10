@@ -6983,3 +6983,128 @@ UserCreationForm
 ✓ Passwords are hashed before storage.
 ✓ Password confirmation prevents typing mistakes.
 ✓ form.save() creates a secure user account.
+
+# ==========================================================
+# Day 6 - Module 6.5 - Protecting Pages with login_required
+# ==========================================================
+
+## Learning Objectives
+- Protected Views
+- @login_required
+- request.user.is_authenticated
+- LOGIN_URL
+- LOGIN_REDIRECT_URL
+- Authentication vs Authorization
+
+## Protected View
+
+A protected view allows access only to authenticated users.
+
+Example:
+
+@login_required
+def dashboard(request):
+    ...
+
+## login_required
+
+Purpose:
+Protect a view by checking if the user is authenticated.
+
+Workflow:
+
+Browser
+→ GET
+→ @login_required
+→ request.user.is_authenticated
+→ True?
+    ├── No
+    │     → Redirect
+    │     → LOGIN_URL
+    └── Yes
+          → View
+          → Template
+          → Browser
+
+## request.user.is_authenticated
+
+Returns:
+- True (authenticated user)
+- False (anonymous user)
+
+## Anonymous User
+
+Not logged in.
+
+request.user
+→ AnonymousUser
+
+request.user.is_authenticated
+→ False
+
+## Authenticated User
+
+Logged in with a valid session.
+
+request.user
+→ User Object
+
+request.user.is_authenticated
+→ True
+
+## LOGIN_URL
+
+Location where unauthenticated users are redirected.
+
+Example:
+
+LOGIN_URL = "/login/"
+
+## LOGIN_REDIRECT_URL
+
+Location where users are redirected after successful login.
+
+Example:
+
+LOGIN_REDIRECT_URL = "/dashboard/"
+
+## Why login_required?
+
+Benefits:
+- Cleaner code
+- Less repetition
+- Easier maintenance
+- Consistent authentication checks
+
+## Authentication vs Authorization
+
+Authentication:
+Checks if the user is logged in.
+
+Authorization:
+Checks what the logged-in user is allowed to do.
+
+login_required only performs authentication.
+
+## Complete Workflow
+
+Browser
+→ GET Protected Page
+→ @login_required
+→ request.user.is_authenticated
+→ True?
+    ├── No
+    │     → LOGIN_URL
+    └── Yes
+          → Protected View
+          → Business Logic
+          → Template
+          → Browser
+
+## Key Takeaways
+
+✓ @login_required protects specific views.
+✓ Anonymous users are redirected to LOGIN_URL.
+✓ Authenticated users can access protected views.
+✓ LOGIN_REDIRECT_URL controls where users go after login.
+✓ login_required checks authentication, not authorization.
