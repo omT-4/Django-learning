@@ -6530,3 +6530,190 @@ Authorization:
 ✓ logout() destroys session.
 ✓ Anonymous users are not logged in.
 ✓ Superuser has highest permissions.
+
+# ==========================================================
+# Day 6 - Module 6.2 - Django Built-in User Model
+# ==========================================================
+
+## Learning Objectives
+- Built-in User model
+- User fields
+- create_user()
+- create()
+- Password hashing
+- is_active
+- is_staff
+- is_superuser
+
+## Built-in User Model
+
+Import:
+
+from django.contrib.auth.models import User
+
+Purpose:
+- Pre-built database model
+- Authentication system
+- Password hashing
+- Admin integration
+- Sessions
+- Permissions
+
+## Common Fields
+
+id
+username
+password
+email
+first_name
+last_name
+is_active
+is_staff
+is_superuser
+date_joined
+last_login
+
+## username
+
+Unique username used for login by default.
+
+## password
+
+Stored as a hash.
+
+Never plain text.
+
+## email
+
+Used for:
+- Notifications
+- Password reset
+- Verification
+
+## first_name
+
+Stores user's first name.
+
+## last_name
+
+Stores user's last name.
+
+## is_active
+
+True
+→ Login allowed
+
+False
+→ Login denied
+
+Useful instead of deleting users.
+
+## is_staff
+
+True
+→ Django Admin access
+
+False
+→ No Admin access
+
+Does not mean Superuser.
+
+## is_superuser
+
+Highest privilege.
+
+Can:
+- Manage users
+- Manage permissions
+- Manage groups
+- Access all admin features
+
+## create_user()
+
+Creates user.
+
+Automatically hashes password.
+
+Workflow:
+
+Python
+→ create_user()
+→ Password Hash
+→ User Model
+→ ORM
+→ SQL INSERT
+→ Database
+
+## create()
+
+Creates database row only.
+
+Does NOT hash password.
+
+Never use for creating users with passwords.
+
+## Password Hashing
+
+Password
+→ Hash
+→ Database
+
+Login:
+
+Entered Password
+→ Hash
+→ Compare Stored Hash
+→ Login Success
+
+## Why User Model?
+
+Without it developers would need to build:
+- Login
+- Logout
+- Sessions
+- Hashing
+- Admin integration
+- Permissions
+- User database
+
+Django already provides everything.
+
+## Staff vs Superuser
+
+Staff:
+Admin access.
+
+Superuser:
+Full administrative privileges.
+
+## Complete Registration Workflow
+
+Registration Form
+→ View
+→ create_user()
+→ Password Hash
+→ User Model
+→ ORM
+→ SQL INSERT
+→ Database
+
+## Login Workflow
+
+Username + Password
+→ authenticate()
+→ Hash
+→ Compare Hash
+→ login()
+→ Session
+→ Browser Cookie
+→ Authenticated User
+
+## Key Takeaways
+
+✓ User is Django's built-in authentication model.
+✓ Passwords are hashed automatically using create_user().
+✓ Never use create() for passwords.
+✓ is_active controls login.
+✓ is_staff controls admin access.
+✓ is_superuser gives highest privileges.
+✓ Django's User model improves productivity and security.

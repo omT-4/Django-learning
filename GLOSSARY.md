@@ -1505,3 +1505,58 @@ The password hashing algorithm used by Django by default.
 
 Session Cookie
 Browser cookie storing the Session ID after login.
+
+# ==========================================================
+# Day 6 - Module 6.2 Glossary
+# ==========================================================
+
+User Model
+Django's built-in database model for authentication.
+
+username
+Unique login name.
+
+password
+Hashed user password.
+
+email
+User's email address.
+
+first_name
+User's first name.
+
+last_name
+User's last name.
+
+is_active
+Determines whether login is allowed.
+
+is_staff
+Determines Django Admin access.
+
+is_superuser
+Determines unrestricted administrative privileges.
+
+create_user()
+Creates a user and hashes the password automatically.
+
+create()
+General ORM creation method that does not hash passwords.
+
+Password Hash
+Secure one-way representation of a password.
+
+date_joined
+Date the account was created.
+
+last_login
+Most recent successful login.
+
+Admin User
+User with access to Django Admin.
+
+Superuser
+Highest privileged Django user.
+
+PBKDF2
+Django's default password hashing algorithm.

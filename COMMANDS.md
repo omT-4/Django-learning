@@ -1805,3 +1805,42 @@ request.user.is_anonymous
 Returns:
 True
 False
+
+# ==========================================================
+# Day 6 - Module 6.2 Commands
+# ==========================================================
+
+## Import User Model
+
+from django.contrib.auth.models import User
+
+## Create User
+
+User.objects.create_user(
+    username="om",
+    password="abc123"
+)
+
+## Wrong Method (Do NOT Use)
+
+User.objects.create(
+    username="om",
+    password="abc123"
+)
+
+## Create Superuser
+
+python manage.py createsuperuser
+
+## User Fields
+
+username
+password
+email
+first_name
+last_name
+is_active
+is_staff
+is_superuser
+date_joined
+last_login
