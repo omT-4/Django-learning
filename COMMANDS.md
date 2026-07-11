@@ -1933,3 +1933,27 @@ request.user.has_perm("app.permission_name")
 request.user.is_staff
 
 request.user.is_superuser
+
+# ==========================================================
+# Day 6 - Module 6.7 Commands
+# ==========================================================
+
+request.user
+
+request.user.username
+
+request.user.email
+
+request.user.first_name
+
+request.user.last_name
+
+request.user.is_staff
+
+request.user.is_superuser
+
+request.user.is_authenticated
+
+Client.objects.filter(
+    assigned_to=request.user
+)

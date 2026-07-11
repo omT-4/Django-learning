@@ -7220,3 +7220,109 @@ Give users only the permissions required for their job.
 ✓ Groups simplify permission management.
 ✓ has_perm() checks authorization.
 ✓ Superusers bypass permission checks.
+
+# ==========================================================
+# Day 6 - Module 6.7 - Working with request.user
+# ==========================================================
+
+## Learning Objectives
+- request.user
+- AnonymousUser
+- User Object
+- Personalization
+- User-specific Queries
+- Ownership of Data
+
+## request.user
+
+Represents the current user associated with the request.
+
+Before Login:
+→ AnonymousUser
+
+After Login:
+→ Current authenticated User object
+
+## Common Attributes
+
+request.user.username
+request.user.email
+request.user.first_name
+request.user.last_name
+request.user.is_staff
+request.user.is_superuser
+request.user.is_authenticated
+
+## request.user.is_authenticated
+
+Returns:
+- True
+- False
+
+## Why request.user Exists
+
+After login():
+- Session created
+- Session cookie stored
+- Django identifies the current user
+- Automatically attaches the User object to every request
+
+## User-Specific Queries
+
+Instead of:
+
+Client.objects.all()
+
+Use:
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+Benefits:
+- Better security
+- Better performance
+- Data privacy
+- Ownership of records
+
+## request.user in Templates
+
+Examples:
+
+{{ request.user.username }}
+
+{{ request.user.first_name }}
+
+{% if request.user.is_authenticated %}
+
+## Personalized Workflow
+
+Browser
+→ Login
+→ authenticate()
+→ login()
+→ Session
+→ request.user
+→ View
+→ ORM Filter
+→ Database
+→ Template
+→ Browser
+
+## Ownership
+
+Each user sees only their own records.
+
+Example:
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+## Key Takeaways
+
+✓ request.user represents the current logged-in user.
+✓ Anonymous users receive AnonymousUser.
+✓ request.user enables personalization.
+✓ Use request.user in ORM queries to return only relevant data.
+✓ Filtering by request.user improves both security and performance.

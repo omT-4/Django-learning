@@ -1703,3 +1703,28 @@ Giving users only the permissions needed to perform their job.
 
 Permission Denied
 Response returned when a user lacks the required permission.
+
+# ==========================================================
+# Day 6 - Module 6.7 Glossary
+# ==========================================================
+
+request.user
+Current authenticated User object attached to the request.
+
+AnonymousUser
+Represents a visitor who has not logged in.
+
+User Object
+The authenticated Django user.
+
+Ownership
+Restricting data so users only access records belonging to them.
+
+Personalization
+Displaying content specific to the current user.
+
+User-Specific Query
+A query filtered using request.user.
+
+Session
+Stores the identity of the current logged-in user between requests.
