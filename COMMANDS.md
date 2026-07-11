@@ -1957,3 +1957,37 @@ request.user.is_authenticated
 Client.objects.filter(
     assigned_to=request.user
 )
+
+# ==========================================================
+# Day 6 - Final Commands
+# ==========================================================
+
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
+
+from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth.decorators import login_required
+
+authenticate()
+
+login()
+
+logout()
+
+request.user
+
+request.user.is_authenticated
+
+request.user.has_perm("app.permission")
+
+request.user.is_staff
+
+request.user.is_superuser
+
+User.objects.create_user()
+
+Client.objects.filter(
+    assigned_to=request.user
+)

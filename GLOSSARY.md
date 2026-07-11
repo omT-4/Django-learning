@@ -1728,3 +1728,49 @@ A query filtered using request.user.
 
 Session
 Stores the identity of the current logged-in user between requests.
+
+# ==========================================================
+# Day 6 Final Glossary
+# ==========================================================
+
+Authentication
+Verifies the identity of a user.
+
+Authorization
+Determines what an authenticated user can do.
+
+UserCreationForm
+Built-in Django form for secure user registration.
+
+authenticate()
+Verifies user credentials.
+
+login()
+Creates an authenticated session.
+
+logout()
+Ends the current session.
+
+Session
+Stores the authenticated user's identity between requests.
+
+request.user
+Represents the current user.
+
+AnonymousUser
+Represents a visitor who has not logged in.
+
+login_required
+Restricts a view to authenticated users.
+
+Permission
+Rule allowing or denying an action.
+
+Group
+Collection of users sharing permissions.
+
+has_perm()
+Checks if a user has a specific permission.
+
+create_user()
+Creates a user with a securely hashed password.

@@ -7326,3 +7326,131 @@ Client.objects.filter(
 ✓ request.user enables personalization.
 ✓ Use request.user in ORM queries to return only relevant data.
 ✓ Filtering by request.user improves both security and performance.
+
+# ==========================================================
+# Day 6 - Module 6.8 - Authentication & Authorization Revision
+# ==========================================================
+
+## Topics Covered
+
+- UserCreationForm
+- create_user()
+- authenticate()
+- login()
+- logout()
+- Sessions
+- request.user
+- login_required
+- Permissions
+- Groups
+- has_perm()
+- User-specific ORM Queries
+
+## Registration Workflow
+
+Browser
+→ GET
+→ UserCreationForm()
+→ Empty Form
+→ POST
+→ UserCreationForm(request.POST)
+→ Validation
+→ form.save()
+→ create_user()
+→ Password Hash
+→ ORM
+→ SQL INSERT
+→ Database
+→ User Created
+
+## Login Workflow
+
+Username + Password
+→ authenticate()
+→ Credentials Verified
+→ login()
+→ Session Created
+→ Browser Cookie
+→ request.user
+
+## Page Protection
+
+@login_required
+→ Checks if user is authenticated.
+→ Redirects to LOGIN_URL if not.
+
+## Authorization
+
+request.user.has_perm("app.permission")
+→ Checks specific permissions.
+
+## Groups
+
+Assign one set of permissions to multiple users.
+
+Benefits:
+- Easier maintenance
+- Less repetitive work
+- Better scalability
+
+## User-Specific Queries
+
+Bad:
+
+Client.objects.all()
+
+Good:
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+Benefits:
+- Security
+- Privacy
+- Performance
+- Data ownership
+
+## Logout
+
+logout()
+→ Session Destroyed
+→ Cookie Removed
+→ request.user becomes AnonymousUser
+
+## Authentication vs Authorization
+
+Authentication:
+Who are you?
+
+Authorization:
+What are you allowed to do?
+
+## Complete Authentication Pipeline
+
+Registration
+→ Validation
+→ Password Hash
+→ Database
+→ Login
+→ authenticate()
+→ login()
+→ Session
+→ request.user
+→ @login_required
+→ has_perm()
+→ ORM
+→ Database
+→ Template
+→ Browser
+→ logout()
+
+## Key Takeaways
+
+✓ authenticate() verifies credentials.
+✓ login() creates an authenticated session.
+✓ request.user represents the current user.
+✓ login_required protects views.
+✓ has_perm() checks authorization.
+✓ Groups simplify permission management.
+✓ Filter data using request.user for security.
