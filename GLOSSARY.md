@@ -1805,3 +1805,31 @@ Data passed from a view to a template.
 
 ORM
 Object Relational Mapper used to communicate with the database.
+
+# ==========================================================
+# Day 7 - Module 7.2 Glossary
+# ==========================================================
+
+Requirement Analysis
+Understanding the client's needs before development.
+
+Entity
+A real-world object about which the system stores information.
+
+Relationship
+A connection between two entities.
+
+ForeignKey
+Represents a one-to-many relationship.
+
+Architecture
+The overall structure of the application.
+
+Workflow
+The sequence of steps used to complete a task.
+
+Role
+Defines an employee's responsibility and permissions.
+
+Module
+A feature-focused section of the application.

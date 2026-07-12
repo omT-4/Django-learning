@@ -7559,3 +7559,121 @@ Browser
 ✓ URLs manage routing.
 ✓ Apps should be modular.
 ✓ Follow SRP for maintainable software.
+
+# ==========================================================
+# Day 7 - Module 7.2 - CRMS System Design
+# ==========================================================
+
+## Learning Objectives
+- Requirement Analysis
+- Entity Identification
+- Relationship Design
+- App Planning
+- Database Planning
+- Workflow Design
+
+## Development Process
+
+Requirements
+→ Analysis
+→ Entities
+→ Relationships
+→ Apps
+→ Database
+→ Authentication
+→ CRUD
+→ Dashboard
+→ Reports
+→ Deployment
+
+## Main Entities
+
+- Client
+- Employee
+- Lawyer
+- Task
+- Document
+- Report
+
+## Relationships
+
+Lawyer
+→ One-to-Many
+→ Client
+
+Client
+→ One-to-Many
+→ Document
+
+Employee
+→ One-to-Many
+→ Task
+
+Employee
+→ One-to-Many
+→ Report
+
+## Recommended Apps
+
+accounts/
+clients/
+employees/
+tasks/
+documents/
+reports/
+dashboard/
+
+## Recommended Employee Design
+
+Employee
+
+Fields:
+- user
+- role
+- department
+- joining_date
+
+Role Examples:
+- Owner
+- Manager
+- Lawyer
+- Receptionist
+- Employee
+
+## Add Client Workflow
+
+Login
+→ Dashboard
+→ Add Client Form
+→ Validation
+→ form.save()
+→ ORM
+→ SQL INSERT
+→ Database
+→ Browser
+
+## Complete System Workflow
+
+Employee
+→ Login
+→ authenticate()
+→ login()
+→ Session
+→ Dashboard
+→ Protected View
+→ Permission Check
+→ ORM
+→ Database
+→ Context
+→ Template
+→ Browser
+→ Logout
+
+## Key Takeaways
+
+✓ Plan before coding.
+✓ Entities become models.
+✓ Relationships define the database.
+✓ Separate features into apps.
+✓ Authentication should exist before CRUD.
+✓ Proper planning reduces future redesign.

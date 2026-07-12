@@ -2009,3 +2009,21 @@ python manage.py startapp reports
 include()
 
 render()
+
+# ==========================================================
+# Day 7 - Module 7.2 Commands
+# ==========================================================
+
+python manage.py startapp accounts
+
+python manage.py startapp employees
+
+python manage.py startapp clients
+
+python manage.py startapp tasks
+
+python manage.py startapp documents
+
+python manage.py startapp reports
+
+python manage.py startapp dashboard
