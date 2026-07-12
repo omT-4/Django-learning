@@ -7454,3 +7454,108 @@ Registration
 ✓ has_perm() checks authorization.
 ✓ Groups simplify permission management.
 ✓ Filter data using request.user for security.
+
+# ==========================================================
+# Day 7 - Module 7.1 - Django Project Architecture
+# ==========================================================
+
+## Learning Objectives
+- Software Architecture
+- MTV Responsibilities
+- SRP
+- Request Lifecycle
+- Multi-App Architecture
+
+## Software Architecture
+
+Blueprint of a Django application.
+
+Defines:
+- Project structure
+- Responsibilities
+- Communication between components
+
+## Responsibilities
+
+### Model
+
+- Database structure
+- Relationships
+- Data rules
+
+### View
+
+- Business logic
+- Handles requests
+- Calls ORM
+- Returns responses
+
+### Template
+
+- Presentation
+- UI
+- Display data
+
+### URLs
+
+- Route browser requests
+- Connect URLs to views
+
+## Single Responsibility Principle (SRP)
+
+Each component should have one responsibility.
+
+Benefits:
+- Easier maintenance
+- Easier debugging
+- Better scalability
+- Cleaner code
+
+## Multi-App Architecture
+
+Example:
+
+accounts/
+clients/
+employees/
+dashboard/
+reports/
+
+Benefits:
+- Separation of concerns
+- Reusability
+- Team collaboration
+- Better organization
+
+## Complete Request Lifecycle
+
+Browser
+→ URL Dispatcher
+→ View
+→ @login_required
+→ request.user.has_perm()
+→ ORM
+→ SQL Query
+→ Database
+→ Model Objects
+→ Context Dictionary
+→ render()
+→ Template
+→ Browser
+
+## Common Mistakes
+
+✗ One giant app
+✗ Business logic inside templates
+✗ HTML inside models
+✗ Direct SQL instead of ORM (when ORM is sufficient)
+✗ Client.objects.all() for user-specific data
+
+## Key Takeaways
+
+✓ Models manage data.
+✓ Views manage business logic.
+✓ Templates manage presentation.
+✓ URLs manage routing.
+✓ Apps should be modular.
+✓ Follow SRP for maintainable software.

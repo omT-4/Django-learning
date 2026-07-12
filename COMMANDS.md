@@ -1991,3 +1991,21 @@ User.objects.create_user()
 Client.objects.filter(
     assigned_to=request.user
 )
+
+# ==========================================================
+# Day 7 - Module 7.1 Commands
+# ==========================================================
+
+python manage.py startapp accounts
+
+python manage.py startapp clients
+
+python manage.py startapp employees
+
+python manage.py startapp dashboard
+
+python manage.py startapp reports
+
+include()
+
+render()

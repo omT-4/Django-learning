@@ -1774,3 +1774,34 @@ Checks if a user has a specific permission.
 
 create_user()
 Creates a user with a securely hashed password.
+
+# ==========================================================
+# Day 7 - Module 7.1 Glossary
+# ==========================================================
+
+Software Architecture
+The blueprint defining how an application is organized.
+
+Model
+Represents database structure and business data.
+
+View
+Processes requests and contains business logic.
+
+Template
+Displays data to the user.
+
+URL Dispatcher
+Routes browser requests to the appropriate view.
+
+SRP (Single Responsibility Principle)
+Each component should have one responsibility.
+
+Multi-App Architecture
+Organizing a Django project into separate apps based on features.
+
+Context Dictionary
+Data passed from a view to a template.
+
+ORM
+Object Relational Mapper used to communicate with the database.
