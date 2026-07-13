@@ -2110,3 +2110,36 @@ Client.objects.filter(
 python manage.py test
 
 DEBUG = False
+
+# ==========================================================
+# Final Commands Revision
+# ==========================================================
+
+python manage.py runserver
+python manage.py startapp app_name
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py test
+
+@login_required
+
+request.user
+
+request.user.has_perm()
+
+form.is_valid()
+
+form.save()
+
+Client.objects.all()
+
+Client.objects.filter()
+
+Client.objects.get()
+
+delete()
+
+render()
+
+redirect()

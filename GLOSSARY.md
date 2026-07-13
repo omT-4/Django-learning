@@ -1976,3 +1976,41 @@ Keeping software reliable through fixes, updates, and improvements.
 
 Retesting
 Testing again after bug fixes to verify the issue is resolved and no new issues were introduced.
+
+# ==========================================================
+# Final Glossary
+# ==========================================================
+
+MVT – Model View Template
+
+ORM – Object Relational Mapper
+
+CRUD – Create Read Update Delete
+
+ModelForm – Form connected to a model
+
+Authentication – Verify identity
+
+Authorization – Control permissions
+
+Ownership – Verify access to specific data
+
+Validation – Check data correctness
+
+Session – Temporary login state
+
+Cookie – Browser data storing session ID
+
+DRY – Don't Repeat Yourself
+
+SRP – Single Responsibility Principle
+
+SoC – Separation of Concerns
+
+Deployment – Releasing software for users
+
+Monitoring – Observing software after deployment
+
+Maintenance – Improving and fixing software
+
+SDLC – Software Development Lifecycle
