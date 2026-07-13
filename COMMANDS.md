@@ -2027,3 +2027,19 @@ python manage.py startapp documents
 python manage.py startapp reports
 
 python manage.py startapp dashboard
+
+# ==========================================================
+# Day 7 - Module 7.3 Commands
+# ==========================================================
+
+@login_required
+
+request.user
+
+request.user.has_perm()
+
+render()
+
+Client.objects.filter(
+    assigned_to=request.user
+)

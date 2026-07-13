@@ -1833,3 +1833,31 @@ Defines an employee's responsibility and permissions.
 
 Module
 A feature-focused section of the application.
+
+# ==========================================================
+# Day 7 - Module 7.3 Glossary
+# ==========================================================
+
+Dashboard
+The main page users see after login.
+
+Role-Based Navigation
+Showing menus based on a user's role.
+
+Sidebar
+A persistent navigation panel.
+
+Quick Actions
+Shortcuts for frequently used tasks.
+
+Role Detection
+Identifying the current user's role to customize the interface.
+
+Least Privilege
+Giving users only the permissions required to perform their job.
+
+Dashboard Widget
+A small information panel displaying important data.
+
+Notification
+A message informing users about important events or tasks.
