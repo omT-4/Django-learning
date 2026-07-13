@@ -2067,3 +2067,25 @@ delete()
 @login_required
 
 request.user.has_perm()
+
+# ==========================================================
+# Day 7 - Module 7.5 Commands
+# ==========================================================
+
+@login_required
+
+request.user
+
+request.user.has_perm()
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+form.is_valid()
+
+form.save()
+
+delete()
+
+logout()

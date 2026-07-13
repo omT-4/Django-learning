@@ -1889,3 +1889,31 @@ A query filtered using the current logged-in user.
 
 Confirmation Dialog
 A prompt asking the user to confirm a destructive action.
+
+# ==========================================================
+# Day 7 - Module 7.5 Glossary
+# ==========================================================
+
+Application Security
+Protecting an application, its users, and its data from unauthorized access and misuse.
+
+Defense in Depth
+Using multiple layers of security instead of relying on a single protection mechanism.
+
+Authentication
+Verifying a user's identity.
+
+Authorization
+Determining what an authenticated user is allowed to do.
+
+Ownership
+Ensuring a user can only access resources they are permitted to access.
+
+Validation
+Checking whether submitted data satisfies application rules.
+
+Least Privilege
+Granting users only the permissions necessary to perform their tasks.
+
+Confirmation
+An additional step before executing destructive actions such as deletion.

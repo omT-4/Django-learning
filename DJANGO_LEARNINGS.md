@@ -7909,3 +7909,123 @@ Receptionist
 ✓ Validation ensures only correct data enters the database.
 ✓ Redirects prevent duplicate form submissions.
 ✓ User-specific queries improve privacy and security.
+
+# ==========================================================
+# Day 7 - Module 7.5 - Project Security & Best Practices
+# ==========================================================
+
+## Learning Objectives
+- Application Security
+- Defense in Depth
+- Least Privilege
+- Ownership
+- Secure CRUD
+- Validation
+- Security Layers
+
+## Security Layers
+
+Authentication
+→ Verify identity
+
+Authorization
+→ Check permissions
+
+Ownership
+→ Verify resource belongs to current user
+
+Validation
+→ Verify submitted data
+
+Confirmation
+→ Confirm destructive actions
+
+## Defense in Depth
+
+Never rely on one security layer.
+
+Use:
+- @login_required
+- request.user.has_perm()
+- Ownership checks
+- Validation
+- Confirmation dialogs
+
+## Least Privilege
+
+Users receive only the permissions required for their role.
+
+## Secure CRUD
+
+Create
+→ Authentication
+→ Authorization
+→ Validation
+→ Save
+
+Read
+→ Authentication
+→ Authorization
+→ Ownership
+→ Display
+
+Update
+→ Authentication
+→ Authorization
+→ Ownership
+→ Validation
+→ Save
+
+Delete
+→ Authentication
+→ Authorization
+→ Ownership
+→ Confirmation
+→ Delete
+
+## Ownership
+
+Good
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+Bad
+
+Client.objects.all()
+
+## Security Pipeline
+
+Login
+→ authenticate()
+→ login()
+→ Session
+→ request.user
+→ @login_required
+→ has_perm()
+→ Ownership
+→ Validation
+→ CRUD
+→ ORM
+→ Database
+→ Template
+→ Browser
+
+## Best Practices
+
+✓ Validate all input
+✓ Hash passwords
+✓ Protect every CRUD action
+✓ Use ownership checks
+✓ Confirm destructive actions
+✓ Follow Least Privilege
+✓ Use Defense in Depth
+
+## Key Takeaways
+
+✓ Security is layered.
+✓ Authentication alone is not enough.
+✓ Ownership prevents unauthorized data access.
+✓ Validation protects data quality.
+✓ Defense in Depth creates stronger applications.
