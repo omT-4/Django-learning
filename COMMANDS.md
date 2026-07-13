@@ -2102,3 +2102,11 @@ def is_owner(user):
 Client.objects.filter(
     assigned_to=user
 )
+
+# ==========================================================
+# Day 7 - Module 7.7 Commands
+# ==========================================================
+
+python manage.py test
+
+DEBUG = False

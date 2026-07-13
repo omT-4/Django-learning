@@ -1945,3 +1945,34 @@ The ability of a system to grow without major redesign.
 
 Reusable Component
 A function, template, form, or module designed for use in multiple locations.
+
+# ==========================================================
+# Day 7 - Module 7.7 Glossary
+# ==========================================================
+
+SDLC
+Software Development Lifecycle; the complete process of building, deploying, and maintaining software.
+
+Development
+The environment where developers build and test software.
+
+Production
+The live environment used by real users.
+
+Testing
+Verifying that software behaves as expected.
+
+Bug
+An unintended error or unexpected behavior in software.
+
+Deployment
+Making software available to users.
+
+Monitoring
+Observing the application's health, performance, and security after deployment.
+
+Maintenance
+Keeping software reliable through fixes, updates, and improvements.
+
+Retesting
+Testing again after bug fixes to verify the issue is resolved and no new issues were introduced.

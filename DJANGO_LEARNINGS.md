@@ -8146,3 +8146,108 @@ Requirements
 ✓ SoC gives each component one responsibility.
 ✓ Reusability speeds up development.
 ✓ Refactoring keeps projects healthy over time.
+
+# ==========================================================
+# Day 7 - Module 7.7 - Software Lifecycle, Testing & Deployment
+# ==========================================================
+
+## Learning Objectives
+- SDLC
+- Testing
+- Bug Fixing
+- Deployment
+- Monitoring
+- Maintenance
+- Version Updates
+
+## SDLC
+
+Requirements
+→ Planning
+→ Architecture
+→ Development
+→ Testing
+→ Bug Fixes
+→ Retesting
+→ Deployment
+→ Production
+→ Monitoring
+→ Maintenance
+→ Feature Updates
+→ Repeat
+
+## Development vs Production
+
+Development
+- localhost
+- Debug enabled
+- Test data
+- Developers only
+
+Production
+- Real users
+- Real database
+- Secure
+- Optimized
+- Debug disabled
+
+## Types of Testing
+
+Functional Testing
+→ Verify features work correctly.
+
+Security Testing
+→ Verify unauthorized access is blocked.
+
+Validation Testing
+→ Reject invalid input.
+
+Permission Testing
+→ Verify users can only perform allowed actions.
+
+Workflow Testing
+→ Verify complete business workflows.
+
+## Deployment
+
+Development
+→ Testing
+→ Bug Fixes
+→ Retesting
+→ Deployment
+→ Production
+
+## Monitoring
+
+Monitor:
+- Errors
+- Performance
+- Security
+- Server Health
+- Database Health
+
+## Maintenance
+
+Includes:
+- Bug fixes
+- Security updates
+- Performance improvements
+- New features
+- Database improvements
+
+## Best Practices
+
+✓ Test before deployment
+✓ Fix bugs before production
+✓ Disable DEBUG in production
+✓ Monitor continuously
+✓ Keep backups
+✓ Release updates gradually
+
+## Key Takeaways
+
+✓ Software is never truly finished.
+✓ Testing reduces production issues.
+✓ Monitoring detects problems early.
+✓ Maintenance keeps software healthy.
+✓ Continuous improvement is part of software development.
