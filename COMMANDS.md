@@ -2043,3 +2043,27 @@ render()
 Client.objects.filter(
     assigned_to=request.user
 )
+
+# ==========================================================
+# Day 7 - Module 7.4 Commands
+# ==========================================================
+
+ClientForm()
+
+ClientForm(request.POST)
+
+form.is_valid()
+
+form.save()
+
+Client.objects.filter(
+    assigned_to=request.user
+)
+
+Client.objects.get()
+
+delete()
+
+@login_required
+
+request.user.has_perm()

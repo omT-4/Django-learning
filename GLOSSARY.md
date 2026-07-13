@@ -1861,3 +1861,31 @@ A small information panel displaying important data.
 
 Notification
 A message informing users about important events or tasks.
+
+# ==========================================================
+# Day 7 - Module 7.4 Glossary
+# ==========================================================
+
+CRUD
+Create, Read, Update and Delete operations.
+
+ModelForm
+A Django form automatically generated from a model.
+
+Validation
+Checking whether submitted data satisfies application rules.
+
+Redirect
+Sending the browser to another page after processing a request.
+
+PRG Pattern
+Post/Redirect/Get pattern that prevents duplicate form submissions.
+
+Permission Check
+Verifying whether a user can perform a specific action.
+
+User-Specific Query
+A query filtered using the current logged-in user.
+
+Confirmation Dialog
+A prompt asking the user to confirm a destructive action.
