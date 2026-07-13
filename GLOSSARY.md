@@ -1917,3 +1917,31 @@ Granting users only the permissions necessary to perform their tasks.
 
 Confirmation
 An additional step before executing destructive actions such as deletion.
+
+# ==========================================================
+# Day 7 - Module 7.6 Glossary
+# ==========================================================
+
+Code Organization
+Structuring code so it is easy to understand, maintain, and extend.
+
+Separation of Concerns (SoC)
+Giving each component a single, well-defined responsibility.
+
+DRY (Don't Repeat Yourself)
+Avoiding duplicated logic or knowledge throughout the project.
+
+Reusability
+Designing components so they can be used in multiple places.
+
+Refactoring
+Improving code quality without changing its external behavior.
+
+Maintainability
+How easily software can be updated, debugged, or improved.
+
+Scalability
+The ability of a system to grow without major redesign.
+
+Reusable Component
+A function, template, form, or module designed for use in multiple locations.

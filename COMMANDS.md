@@ -2089,3 +2089,16 @@ form.save()
 delete()
 
 logout()
+
+# ==========================================================
+# Day 7 - Module 7.6 Commands
+# ==========================================================
+
+{% extends "base.html" %}
+
+def is_owner(user):
+    return user.role == "owner"
+
+Client.objects.filter(
+    assigned_to=user
+)
